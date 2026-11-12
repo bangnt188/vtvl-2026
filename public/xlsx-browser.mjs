@@ -39,7 +39,15 @@ async function unzip(file){
       if(typeof DecompressionStream!=='function')die('Trình duyệt chưa hỗ trợ giải nén XLSX. Dùng Chrome/Edge bản mới.');
       try{
         const stream=new Blob([blob]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
-        out=new Uint8Array(await new Response(stream).arrayBuffer());
+        const reader=stream.getReader(),chunks=[];let size=0;
+        while(true){
+          const part=await reader.read();if(part.done)break;
+          size+=part.value.byteLength;
+          if(size>raw || size>MAX_PART){await reader.cancel();die('Giải nén vượt kích thước đã khai báo: '+name);}
+          chunks.push(part.value);
+        }
+        out=new Uint8Array(size);let at=0;
+        for(const chunk of chunks){out.set(chunk,at);at+=chunk.byteLength}
       }catch(e){die('Không thể giải nén "'+name+'". Cần trình duyệt hỗ trợ deflate-raw hoặc file ZIP khác.')}
     }
     if(out.length!==raw)die('Kích thước giải nén không đúng: '+name);
@@ -92,7 +100,7 @@ export async function parseXlsx(file){
     const x=xml(archive[path],path),cells={};
     for(const c of nodes(x,'c')){
       const address=c.getAttribute('r');if(!address)continue;
-      cells[address]={value:val(c,shared),formula:direct(c,'f')?.textContent??null};
+      cells[address]={value:val(c,shared),formula:direct(c,'f')?.outerHTML??null};
     }
     sheets[name]={name,path,cells,
       merges:nodes(x,'mergeCell').map(e=>e.getAttribute('ref')).sort(),
