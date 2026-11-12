@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2e2b">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="VTVL 360">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VTVL 360">
+<link rel="canonical" href="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VTVL 360">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Vị trí việc làm 360">
+<meta property="og:description" content="Tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu VTVL ngay trên trình duyệt. Dữ liệu không rời khỏi máy.">
+<meta property="og:url" content="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:image" content="https://vtvl.captain-solution.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Bấm giờ công việc</title>
+<meta name="description" content="Bấm giờ từng việc của vị trí việc làm, ghi số sản phẩm cả kỳ và xuất phiếu một người cho đầu mối, ngay trên điện thoại.">
+<meta name="author" content="Trang Hoài Vũ">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2312283f%27/%3E%3Cpath d=%27M7 22h18%27 stroke=%27%23e9b949%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M9 17V10m7 7V7m7 10v-5%27 stroke=%27%23ffffff%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/chung.css?v=1.3.0.bb475873fa">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* Một cột cho điện thoại: mở phiếu → chọn vị trí → từng việc (số cả kỳ, đồng hồ bấm giờ, các lần đo) → xuất phiếu một người.
+   Cùng họ màu, chữ với "Tạo tệp đơn vị"; thêm một màu "đang đo" cho đồng hồ. */
+:root {
+  --paper: #f4f6f5; --sheet: #ffffff; --ink: #17242b; --ink-2: #4a5a61; --ink-3: #64747b; --line: #d5dedd; --line-2: #e7edec;
+  --accent: #0e6b66; --accent-ink: #ffffff; --accent-soft: #e2f0ee;
+  --live: #c03d0c; --live-ink: #ffffff; --live-soft: #fcebe2;
+  --fix: #b42318; --fix-ink: #ffffff; --fix-soft: #fdeceb; --warn: #8c5300; --warn-soft: #fcf1df; --ok: #1e7a46; --ok-soft: #e4f4ea;
+  --scrim: rgba(12, 22, 25, .5);
+  --shadow: 0 1px 2px rgba(23, 36, 43, .06), 0 6px 22px rgba(23, 36, 43, .09);
+  --shadow-up: 0 -2px 18px rgba(23, 36, 43, .10);
+  --display: "Literata", Georgia, "Times New Roman", serif;
+  --body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --dock-h: 0px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a9b9bb; --ink-3: #8b9c9f; --line: #2c3c3f; --line-2: #223033;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --live: #ff9466; --live-ink: #2b0e02; --live-soft: #3b1f14;
+  --fix: #f8746a; --fix-ink: #2a0806; --fix-soft: #3a1c1a; --warn: #f2b552; --warn-soft: #372a13; --ok: #62d18f; --ok-soft: #12301f;
+  --scrim: rgba(0, 0, 0, .62);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 22px rgba(0, 0, 0, .3);
+  --shadow-up: 0 -2px 18px rgba(0, 0, 0, .45); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a9b9bb; --ink-3: #8b9c9f; --line: #2c3c3f; --line-2: #223033;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --live: #ff9466; --live-ink: #2b0e02; --live-soft: #3b1f14;
+  --fix: #f8746a; --fix-ink: #2a0806; --fix-soft: #3a1c1a; --warn: #f2b552; --warn-soft: #372a13; --ok: #62d18f; --ok-soft: #12301f;
+  --scrim: rgba(0, 0, 0, .62);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 22px rgba(0, 0, 0, .3);
+  --shadow-up: 0 -2px 18px rgba(0, 0, 0, .45); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+body.has-dock { padding-bottom: calc(var(--dock-h) + 8px); }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--mono); letter-spacing: -.01em; }
+.vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* đầu trang */
+.top { background: var(--sheet); border-bottom: 1px solid var(--line); }
+.top .wrap { padding-block: 22px 18px; display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 7.5vw, 40px); line-height: 1.1; letter-spacing: -.01em; }
+.lede { color: var(--ink-2); max-width: 60ch; font-size: 15.5px; }
+
+/* các bước */
+main { padding-block: 16px 28px; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+.step { background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); min-width: 0; scroll-margin-top: 12px; }
+.step-h { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.step-n { width: 28px; height: 28px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 14px; flex: none; }
+.step-h h2 { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.step-h .aside { margin-left: auto; font-size: 13.5px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.notice { background: var(--warn-soft); border-radius: 12px; padding: 10px 14px; font-size: 14.5px; }
+.notice.info { background: var(--accent-soft); color: var(--ink); }
+.alert { border-radius: 12px; padding: 10px 14px; font-size: 14.5px; border: 1px solid var(--fix); background: var(--fix-soft); }
+
+/* bước 1 */
+.pick { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 3px 12px; align-items: center; border: 1.5px dashed var(--accent); background: var(--accent-soft); border-radius: 14px; padding: 16px; cursor: pointer; min-width: 0; }
+.pick svg { grid-row: span 2; width: 44px; height: 48px; }
+.pick b { font-size: 17px; color: var(--accent); line-height: 1.3; }
+.pick small { color: var(--ink-2); font-size: 13.5px; line-height: 1.45; overflow-wrap: anywhere; }
+.vh:focus-visible + .pick, .vh:focus-visible ~ #pickBox .pick { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pick.busy { opacity: .65; pointer-events: none; }
+.unit { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: center; min-width: 0; }
+.unit-code { grid-row: span 2; font-family: var(--mono); font-weight: 600; font-size: 19px; padding: 8px 10px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); align-self: start; }
+.unit-name { font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.unit-facts { font-size: 13.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.unit-file { grid-column: 1 / -1; font-size: 12.5px; color: var(--ink-3); overflow-wrap: anywhere; }
+.unit .row-actions { grid-column: 1 / -1; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ô nhập */
+.field { display: grid; gap: 6px; min-width: 0; }
+.field > label { font-weight: 600; font-size: 15px; line-height: 1.35; }
+.field > label small { font-weight: 400; color: var(--ink-2); font-size: 13.5px; }
+.hint { font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.hint.soft { color: var(--ink-3); }
+.hint.good { color: var(--ok); }
+.echo { font-size: 13.5px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.echo:empty { display: none; }
+.echo.bad { color: var(--fix); }
+.warnline { color: var(--warn); font-size: 13.5px; }
+input[type="text"], input[type="search"], input[type="date"], input[type="time"], select { width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet); padding: 10px 12px; font-size: 16px; }
+textarea { width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet); padding: 10px 12px; font-size: 16px; line-height: 1.45; resize: vertical; field-sizing: content; }
+input[type="text"]:hover, input[type="search"]:hover, input[type="date"]:hover, input[type="time"]:hover, select:hover, textarea:hover { border-color: var(--ink-3); }
+.field.invalid input { border-color: var(--fix); }
+input::placeholder { color: var(--ink-3); opacity: 1; }
+
+/* nút */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet); font-weight: 600; font-size: 15px; cursor: pointer; text-align: center; line-height: 1.25; }
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.stop { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+.btn.big { width: 100%; min-height: 56px; font-size: 18px; border-radius: 12px; }
+.btn.danger { color: var(--fix); border-color: var(--fix); background: transparent; }
+.btn.danger.solid { background: var(--fix); color: var(--fix-ink); }
+.btn.primary:hover, .btn.stop:hover, .btn.danger.solid:hover { filter: brightness(1.06); }
+.linkbtn { background: none; border: 0; padding: 6px 0; min-height: 36px; color: var(--accent); font-weight: 600; font-size: 14.5px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-align: left; }
+
+/* danh sách công việc */
+.tools { display: grid; gap: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.fchip { min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--sheet); font-size: 14.5px; font-weight: 500; cursor: pointer; }
+.fchip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.fchip .n { font-variant-numeric: tabular-nums; opacity: .75; margin-left: 6px; }
+.jobs { display: grid; gap: 10px; min-width: 0; }
+.empty { font-size: 14.5px; color: var(--ink-2); padding: 8px 2px; }
+.job { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; min-width: 0; scroll-margin-top: 12px; }
+.job.open { border-color: var(--accent); box-shadow: var(--shadow); }
+.job.live { border-color: var(--live); }
+.job-h { display: grid; gap: 5px; width: 100%; padding: 14px 14px 13px; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 14px; min-width: 0; }
+.job-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.job-code { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); overflow-wrap: anywhere; }
+.chev { margin-left: auto; width: 22px; height: 22px; flex: none; color: var(--ink-3); transition: transform .15s; }
+.job.open .chev { transform: rotate(180deg); }
+.job-name { font-weight: 600; font-size: 16px; line-height: 1.4; overflow-wrap: anywhere; }
+.job:not(.open) .job-name { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.job-meta { font-size: 13.5px; color: var(--ink-2); line-height: 1.4; overflow-wrap: anywhere; }
+.job-stat { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 3px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 3px 10px; font-size: 13px; line-height: 1.5; background: var(--line-2); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.chip.on { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+.chip.live { background: var(--live-soft); color: var(--live); font-weight: 600; }
+.chip.bad { background: var(--fix-soft); color: var(--fix); }
+.chip.est { background: var(--warn-soft); color: var(--warn); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; display: inline-block; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .2; } }
+.ladder { display: inline-flex; gap: 3px; align-items: center; font-size: 12px; color: var(--ink-3); }
+.ladder i { width: 14px; height: 6px; border-radius: 3px; background: var(--line); }
+.ladder i.on { background: var(--accent); }
+.ladder i.opt:not(.on) { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.ladder small { margin-left: 3px; font-variant-numeric: tabular-nums; }
+.job-b { border-top: 1px solid var(--line-2); padding: 14px; display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.grp { display: grid; gap: 14px; min-width: 0; }
+.grp-h { font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.sugg { display: grid; gap: 2px; text-align: left; border: 1px dashed var(--line); border-radius: 10px; background: var(--paper); padding: 8px 12px; cursor: pointer; font-size: 14px; color: var(--ink-2); min-width: 0; overflow-wrap: anywhere; }
+.sugg b { color: var(--accent); font-size: 13px; font-weight: 600; }
+.sugg:hover { border-color: var(--accent); }
+.to-export { justify-self: start; }
+
+/* gợi ý của phiếu 1.4 */
+.goiy-bar { display: grid; gap: 10px; border: 1px dashed var(--accent); border-radius: 12px; padding: 12px; background: var(--accent-soft); }
+.goiy-bar .btn { justify-self: start; }
+.goiy { display: grid; gap: 8px; border: 1px dashed var(--line); border-radius: 12px; padding: 12px; background: var(--paper); min-width: 0; }
+.goiy-h { display: flex; align-items: center; justify-content: space-between; gap: 8px 10px; flex-wrap: wrap; }
+.goiy dl { margin: 0; display: grid; gap: 4px; }
+.goiy dl > div { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.45; }
+.goiy dt { color: var(--ink-3); }
+.goiy dd { margin: 0; overflow-wrap: anywhere; }
+.goiy dd b { font-variant-numeric: tabular-nums; }
+.btn.small { min-height: 40px; padding: 6px 14px; font-size: 14.5px; }
+.tag-goiy { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); font-size: 12.5px; font-weight: 600; white-space: nowrap; vertical-align: 1px; }
+.timebox { border: 1px solid var(--line-2); border-radius: 14px; background: var(--paper); min-width: 0; }
+.timebox > summary { cursor: pointer; padding: 12px 14px; min-height: 48px; font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 10px; list-style: none; }
+.timebox > summary::-webkit-details-marker { display: none; }
+.timebox > summary::before { content: ""; width: 7px; height: 7px; border-right: 2px solid var(--ink-3); border-bottom: 2px solid var(--ink-3); transform: rotate(-45deg); transition: transform .15s; flex: none; }
+.timebox[open] > summary::before { transform: rotate(45deg); }
+.timebox > summary small { font-weight: 400; color: var(--ink-2); font-size: 13.5px; }
+.timebox-b { display: grid; gap: 18px; padding: 0 12px 12px; min-width: 0; }
+
+/* đồng hồ */
+.watch { display: grid; gap: 12px; background: var(--paper); border: 1px solid var(--line-2); border-radius: 14px; padding: 14px; min-width: 0; }
+.watch.run { border-color: var(--live); background: var(--live-soft); }
+.watch-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.face { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; }
+.digits { font-family: var(--mono); font-weight: 500; font-size: 46px; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--ink); }
+.watch.run .digits { color: var(--live); }
+.face-s { font-size: 14px; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+.watch.run .face-s { color: var(--live); font-weight: 600; }
+.laps { list-style: none; margin: 0; padding: 0; display: grid; }
+.lap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 10px; padding: 10px 0; border-top: 1px solid var(--line); align-items: center; }
+.lap-l { display: grid; gap: 1px; min-width: 0; }
+.lap-k { font-size: 13px; color: var(--ink-3); }
+.lap-t { font-family: var(--mono); font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.lap-t small { font-family: var(--body); font-size: 12.5px; color: var(--ink-3); }
+.lap-r { font-size: 14px; color: var(--ink-2); }
+.lap-r b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.lap-a { display: flex; gap: 6px; }
+.lap-a .btn { min-height: 40px; padding: 6px 12px; font-size: 14px; }
+.lap.ask { grid-template-columns: minmax(0, 1fr); background: var(--fix-soft); border-radius: 10px; padding: 10px 12px; border-top: 0; margin: 4px 0; font-size: 14.5px; }
+.avg { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 10px; flex-wrap: wrap; font-size: 15px; padding-top: 10px; border-top: 1px solid var(--line); }
+.avg b { font-size: 17px; font-variant-numeric: tabular-nums; }
+
+/* bước 4 */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tile { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--paper); display: grid; gap: 2px; min-width: 0; align-content: start; }
+.tile .k { font-size: 12.5px; color: var(--ink-2); line-height: 1.3; }
+.tile .v { font-size: 24px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.tile .s { font-size: 12px; color: var(--ink-3); line-height: 1.35; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.checks > li { border-radius: 10px; padding: 9px 12px; font-size: 14px; display: grid; gap: 2px; min-width: 0; }
+.checks > li.warn { background: var(--warn-soft); }
+.checks > li.err { background: var(--fix-soft); border: 1px solid var(--fix); }
+.checks > li.ok { background: var(--ok-soft); }
+.checks .h { font-weight: 600; }
+.checks .jl { display: flex; flex-wrap: wrap; gap: 0 12px; }
+.checks .jl .linkbtn { font-size: 13.5px; font-weight: 500; min-height: 32px; padding: 4px 0; overflow-wrap: anywhere; }
+.checks .more { font-size: 13px; color: var(--ink-2); align-self: center; }
+.file { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-width: 0; }
+.file svg { width: 22px; height: 24px; }
+.file .mono { font-size: 13.5px; overflow-wrap: anywhere; display: block; }
+.file small { color: var(--ink-3); font-size: 12.5px; display: block; }
+.note { font-size: 14px; color: var(--ink-2); }
+.note a, footer a { color: var(--accent); font-weight: 600; text-underline-offset: 2px; }
+.keep { display: grid; gap: 10px; padding: 4px 2px; }
+.keep b { font-size: 15px; }
+.keep .btn { justify-self: start; }
+.confirm { border: 1px solid var(--fix); background: var(--fix-soft); border-radius: 12px; padding: 12px; display: grid; gap: 10px; font-size: 14.5px; }
+
+/* cách làm */
+.how { display: grid; gap: 12px; padding: 4px 2px; }
+.how h2 { font-family: var(--display); font-size: 21px; font-weight: 700; }
+.how-l { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; }
+.how-l li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; counter-increment: s; font-size: 15px; color: var(--ink-2); }
+.how-l li::before { content: counter(s); width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-size: 12.5px; font-weight: 700; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.how-l b { color: var(--ink); }
+.how-note { font-size: 13.5px; color: var(--ink-3); }
+
+/* thanh dưới khi đang đo */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--sheet); border-top: 1px solid var(--live); box-shadow: var(--shadow-up); padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.dock-in { max-width: 728px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; }
+.dock-l { display: grid; gap: 1px; min-width: 0; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; }
+.dock-clock { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--live); display: inline-flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.dock-clock.wait { font-family: var(--body); font-size: 15px; }
+.dock-job { font-size: 13.5px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dock .btn { min-height: 52px; font-size: 17px; padding-inline: 20px; }
+
+/* hộp hỏi số sản phẩm */
+dialog.sheet { border: 0; padding: 0; width: 100%; max-width: 520px; max-height: calc(100dvh - 16px); margin: auto auto 0; border-radius: 18px 18px 0 0; background: var(--sheet); color: var(--ink); box-shadow: var(--shadow); overflow: auto; }
+dialog.sheet::backdrop { background: var(--scrim); }
+.dlg { display: grid; gap: 14px; padding-block: 18px calc(16px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.dlg h3 { font-family: var(--display); font-size: 21px; font-weight: 700; line-height: 1.2; }
+.dlg-job { font-size: 14px; color: var(--ink-2); margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dlg-time { font-size: 14.5px; color: var(--ink-2); font-variant-numeric: tabular-nums; background: var(--paper); border-radius: 10px; padding: 8px 12px; }
+.dlg-time .mono { font-size: 15px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.stepper { display: grid; grid-template-columns: 56px minmax(0, 1fr) 56px; gap: 8px; }
+.stepper .btn { min-height: 56px; font-size: 26px; padding: 0; font-weight: 500; }
+.stepper input[type="text"] { text-align: center; font-family: var(--mono); font-size: 28px; font-weight: 600; min-height: 56px; }
+.dlg-calc { font-size: 15px; color: var(--accent); font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; min-height: 1.5em; }
+.dlg-more summary { cursor: pointer; font-weight: 600; font-size: 14.5px; color: var(--accent); padding: 6px 0; }
+.times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.dlg-msg { display: grid; gap: 6px; }
+.dlg-msg:empty { display: none; }
+.dlg-msg .e { color: var(--fix); font-size: 14px; }
+.dlg-msg .w { color: var(--warn); font-size: 14px; }
+.dlg-actions { display: grid; gap: 8px; }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + var(--dock-h) + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 10px; font-size: 14.5px; box-shadow: var(--shadow); z-index: 40; width: max-content; max-width: calc(100% - 32px); }
+footer { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
+footer .wrap { padding-block: 14px 24px; display: grid; gap: 4px; }
+
+@media (min-width: 600px) {
+  dialog.sheet { margin: auto; border-radius: 18px; }
+  .dlg { padding-inline: 20px; }
+}
+@media (max-width: 420px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles .tile:last-child { grid-column: 1 / -1; }
+  .times { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .times .f-date { grid-column: 1 / -1; }
+  .digits { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } .chev, .timebox > summary::before { transition: none; } }
+</style>
+</head>
+<body>
+<div class="v360-bar"><div class="v360-bar-in">
+  <a class="v360-brand" href="index.html"><span>Vị trí việc làm <b>360</b></span></a>
+  <nav class="v360-nav" aria-label="Các trang"><a href="index.html">Trang chủ</a><a href="tao-tep.html">Tạo tệp đơn vị</a><a href="ra-soat.html">Rà soát 9 biểu</a><a href="bam-gio.html" aria-current="page">Bấm giờ</a></nav>
+</div></div>
+
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Vị trí việc làm · bản 1.2.1</div>
+    <h1>Bấm giờ công việc</h1>
+    <p class="lede">Ghi số sản phẩm cả kỳ, bấm giờ khi làm thật, rồi xuất phiếu của mình gửi đầu mối. Không cần họ tên; số liệu chỉ lưu trên máy này.</p>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <p class="notice" id="storeNote" hidden>Trình duyệt này không cho lưu tạm. Tải lại trang sẽ mất số liệu, nên xuất phiếu trước khi đóng trang.</p>
+
+  <section class="step" id="s1" aria-labelledby="h1s">
+    <div class="step-h"><span class="step-n" aria-hidden="true">1</span><h2 id="h1s">Mở phiếu của đơn vị</h2></div>
+    <input type="file" id="file" class="vh" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    <div id="pickBox">
+      <label for="file" class="pick" id="pick">
+        <svg viewBox="0 0 44 48" aria-hidden="true"><path d="M8 2h20l12 12v30a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="var(--sheet)" stroke="var(--accent)" stroke-width="2"/><path d="M28 2v12h12" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M13 22h18M13 29h18M13 36h11" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
+        <b id="pickT">Chọn tệp phiếu (.xlsx)</b>
+        <small>Tệp Phieu_thu_so_lieu_….xlsx đầu mối gửi qua Zalo hoặc thư. Trang chỉ đọc tệp trên máy, không gửi đi đâu.</small>
+      </label>
+    </div>
+    <div class="unit" id="unitBox" hidden>
+      <span class="unit-code" id="unitCode"></span>
+      <span class="unit-name" id="unitName"></span>
+      <span class="unit-facts" id="unitFacts"></span>
+      <span class="unit-file mono" id="unitFile"></span>
+      <div class="row-actions"><button type="button" class="btn" id="reopen">Mở phiếu khác</button></div>
+    </div>
+    <div id="loadErr" aria-live="polite"></div>
+  </section>
+
+  <section class="how" id="how" aria-labelledby="howH">
+    <h2 id="howH">Cách làm</h2>
+    <ol class="how-l">
+      <li><span><b>Mở phiếu của đơn vị.</b> Tệp do đầu mối gửi; mở thẳng từ máy là được.</span></li>
+      <li><span><b>Chọn vị trí của mình,</b> ghi số sản phẩm cả kỳ 01/10/2025–30/9/2026 và nguồn số liệu cho từng việc.</span></li>
+      <li><span><b>Bấm giờ khi làm thật.</b> Bắt đầu, Kết thúc, rồi ghi số sản phẩm làm được. Nên đo 3–5 lần mỗi việc chính.</span></li>
+      <li><span><b>Xuất phiếu của tôi</b> và gửi tệp cho đầu mối. Đầu mối gộp phiếu của mọi người ở bước 4 của Tạo tệp đơn vị.</span></li>
+    </ol>
+    <p class="how-note">Không cần họ tên. Số liệu lưu trong trình duyệt của máy này; mở lại trang bằng đúng trình duyệt đó để làm tiếp.</p>
+  </section>
+
+  <section class="step" id="s2" aria-labelledby="h2s" hidden>
+    <div class="step-h"><span class="step-n" aria-hidden="true">2</span><h2 id="h2s">Vị trí của bạn</h2></div>
+    <div class="field">
+      <label for="pos">Vị trí việc làm</label>
+      <select id="pos"></select>
+      <span class="hint">Kiêm nhiệm nhiều vị trí: làm từng vị trí, mỗi vị trí xuất một tệp.</span>
+    </div>
+    <div class="field" id="whoBox" hidden>
+      <label for="who">Người đo <small>(chức danh, không cần họ tên)</small></label>
+      <input type="text" id="who" autocomplete="off" autocapitalize="sentences" enterkeyhint="done">
+      <span class="hint">Ghi một lần cho cả phiên; trang điền vào cột Người đo của mọi lần đo.</span>
+      <span class="warnline" id="whoWarn" hidden>Có vẻ là họ tên hoặc số định danh. Chỉ ghi chức danh.</span>
+    </div>
+  </section>
+
+  <section class="step" id="s3" aria-labelledby="h3s" hidden>
+    <div class="step-h"><span class="step-n" aria-hidden="true">3</span><h2 id="h3s">Công việc của vị trí</h2><span class="aside" id="jobsCount"></span></div>
+    <p class="notice info" id="noPP2" hidden>Vị trí này không tính theo giờ sản phẩm; chỉ cần ghi số sản phẩm và nguồn số liệu.</p>
+    <p class="hint" id="s3hint">Mỗi việc: ghi số sản phẩm cả kỳ và nguồn số liệu, rồi bấm giờ khi làm thật. Vị trí có nhiều người: thống nhất với đầu mối ai ghi số sản phẩm, để số không lệch khi gộp phiếu.</p>
+    <div class="goiy-bar" id="goiyBar" hidden>
+      <p class="hint">Phiếu có gợi ý kèm căn cứ (HD 13, Phụ lục 3). Gợi ý là điểm xuất phát: chép rồi sửa theo thực tế. Ô giữ nguyên gợi ý được ghi là “chưa đo thực tế” và vào danh sách chưa đủ căn cứ.</p>
+      <button type="button" class="btn" id="goiyAll">Dùng gợi ý cho mọi việc chưa có số</button>
+    </div>
+    <div class="tools" id="tools" hidden>
+      <input type="search" id="q" placeholder="Tìm công việc, gõ không dấu cũng được" autocomplete="off" aria-label="Tìm công việc">
+      <div class="chips" role="group" aria-label="Lọc công việc">
+        <button type="button" class="fchip" data-filter="all" aria-pressed="true">Tất cả<span class="n" id="nAll"></span></button>
+        <button type="button" class="fchip" data-filter="done" aria-pressed="false">Đã ghi<span class="n" id="nDone"></span></button>
+        <button type="button" class="fchip" data-filter="todo" aria-pressed="false">Chưa ghi<span class="n" id="nTodo"></span></button>
+      </div>
+    </div>
+    <div class="jobs" id="jobs"></div>
+    <button type="button" class="linkbtn to-export" id="toExport">Ghi xong thì xuất phiếu ở bước 4</button>
+  </section>
+
+  <section class="step" id="s4" aria-labelledby="h4s" hidden>
+    <div class="step-h"><span class="step-n" aria-hidden="true">4</span><h2 id="h4s">Xuất phiếu của tôi</h2></div>
+    <div class="tiles" id="tiles"></div>
+    <ul class="checks" id="checks" aria-label="Kiểm tra trước khi xuất"></ul>
+    <div class="file" id="filePv"></div>
+    <button type="button" class="btn big primary" id="exportBtn">Xuất phiếu của tôi</button>
+    <p class="note">Gửi tệp này cho đầu mối; đầu mối nạp ở bước 4 của <a href="tao-tep.html" target="_blank" rel="noopener">Tạo tệp đơn vị</a>.</p>
+    <p class="hint" id="exported" hidden></p>
+    <div id="exportErr" aria-live="polite"></div>
+  </section>
+
+  <section class="keep" id="keep" aria-labelledby="keepH" hidden>
+    <div><b id="keepH">Dữ liệu trên máy</b><p class="hint">Phiếu đã mở, số liệu và lần đo lưu trong trình duyệt này, theo đơn vị và vị trí, đến khi bạn xóa.</p></div>
+    <button type="button" class="btn danger" id="wipeBtn">Xóa dữ liệu trên máy</button>
+    <div class="confirm" id="wipeAsk" hidden>
+      <p>Xóa mọi số liệu, lần đo và phiếu đã mở trên máy này? Không lấy lại được, nên xuất phiếu trước khi xóa.</p>
+      <div class="row-actions"><button type="button" class="btn danger solid" id="wipeYes">Xóa hết</button><button type="button" class="btn" id="wipeNo">Thôi</button></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Bấm giờ công việc · bản 1.2.1 (01/11/2026). Không gửi dữ liệu đi đâu; đã mở trang thì vẫn dùng được khi mất mạng.</span>
+    <span>Cùng bộ với <a href="tao-tep.html" target="_blank" rel="noopener">Tạo tệp đơn vị</a> và <a href="ra-soat.html" target="_blank" rel="noopener">Rà soát 9 biểu</a>.</span>
+  </div>
+</footer>
+
+<div class="dock" id="dock" hidden>
+  <div class="dock-in">
+    <button type="button" class="dock-l" id="dockGo" aria-label="Xem việc đang bấm giờ">
+      <span class="dock-clock" id="dockState"></span>
+      <span class="dock-job" id="dockJob"></span>
+    </button>
+    <button type="button" class="btn stop" id="dockBtn" data-act="stop">Kết thúc</button>
+  </div>
+</div>
+
+<dialog id="dlg" class="sheet" aria-labelledby="dlgH">
+  <form class="dlg" id="dlgForm" novalidate>
+    <div>
+      <h3 id="dlgH">Làm được mấy sản phẩm?</h3>
+      <p class="dlg-job" id="dlgJob"></p>
+    </div>
+    <p class="dlg-time" id="dlgTime"></p>
+    <div class="field">
+      <label for="dlgN" id="dlgNL">Số sản phẩm làm được</label>
+      <div class="stepper">
+        <button type="button" class="btn" data-step="-1" aria-label="Bớt một">−</button>
+        <input type="text" id="dlgN" inputmode="decimal" autocomplete="off" enterkeyhint="done">
+        <button type="button" class="btn" data-step="1" aria-label="Thêm một">+</button>
+      </div>
+    </div>
+    <p class="dlg-calc" id="dlgCalc" aria-live="polite"></p>
+    <details class="dlg-more" id="dlgMore">
+      <summary>Sửa ngày, giờ</summary>
+      <div class="times">
+        <div class="field f-date"><label for="dlgDate">Ngày</label><input type="date" id="dlgDate" min="2025-10-01"></div>
+        <div class="field"><label for="dlgStart">Bắt đầu</label><input type="time" id="dlgStart"></div>
+        <div class="field"><label for="dlgEnd">Kết thúc</label><input type="time" id="dlgEnd"></div>
+      </div>
+    </details>
+    <div class="dlg-msg" id="dlgMsg" aria-live="polite"></div>
+    <div class="dlg-actions">
+      <button type="submit" class="btn big primary" id="dlgSave">Lưu lần đo</button>
+      <button type="button" class="btn" id="dlgResume">Chưa xong, bấm giờ tiếp</button>
+      <button type="button" class="btn" id="dlgCancel">Thôi</button>
+      <button type="button" class="btn danger" id="dlgDiscard">Bỏ lần đo này</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+
+<div class="v360-foot"><div class="v360-foot-in">
+  <span><b>Vị trí việc làm 360</b> · bản web 1.3.0 (02/11/2026) · Bấm giờ công việc 1.2.1</span>
+  <span class="v360-safe">Tệp của đơn vị chỉ xử lý trên máy của bạn, không gửi lên máy chủ.</span>
+  <span id="v360NhatKy" hidden>Trang có ghi nhật ký sử dụng (mã, tên đơn vị, thao tác, số đếm) để tác giả theo dõi; không gửi tệp, không ghi họ tên.</span>
+  <span id="v360TacGia" hidden></span>
+  <span id="v360LienHe" hidden></span>
+</div></div>
+<script src="js/bam-gio.js?v=1.3.0.4ad791068e" data-xlsx="lib/xlsx-0.18.5.full.min.js?v=1.3.0.c9506197ca"></script>
+<script src="js/cau-hinh.js?v=1.3.0.47973bc4f9"></script>
+<script src="js/khung.js?v=1.3.0.b723b2bb43"></script>
+</body>
+</html>

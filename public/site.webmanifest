@@ -1,0 +1,34 @@
+{
+  "name": "VTVL 360 — Vị trí việc làm",
+  "short_name": "VTVL 360",
+  "description": "Rà soát vị trí việc làm theo Hướng dẫn 13-HD/BTCTU: tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu. Dữ liệu xử lý trên máy.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7f5",
+  "theme_color": "#0f2e2b",
+  "lang": "vi",
+  "categories": ["productivity", "business"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

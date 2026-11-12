@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2e2b">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="VTVL 360">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VTVL 360">
+<link rel="canonical" href="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VTVL 360">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Vị trí việc làm 360">
+<meta property="og:description" content="Tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu VTVL ngay trên trình duyệt. Dữ liệu không rời khỏi máy.">
+<meta property="og:url" content="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:image" content="https://vtvl.captain-solution.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Tạo tệp đơn vị</title>
+<meta name="description" content="Tạo tệp vị trí việc làm riêng cho khối Đảng, khối chính quyền, đơn vị sự nghiệp của xã, phường và trường THCS–THPT từ mẫu chuẩn, kèm phiếu thu số liệu, ngay trên trình duyệt.">
+<meta name="author" content="Trang Hoài Vũ">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2312283f%27/%3E%3Cpath d=%27M7 22h18%27 stroke=%27%23e9b949%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M9 17V10m7 7V7m7 10v-5%27 stroke=%27%23ffffff%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/chung.css?v=1.3.0.bb475873fa">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* Bàn tách tệp: dải mốc nộp ở đầu; bên trái ba bước (mẫu → đơn vị → tạo tệp), bên phải việc cần làm tiếp. Cùng họ với "Rà soát 9 biểu". */
+:root {
+  --paper: #f4f6f5; --sheet: #ffffff; --ink: #17242b; --ink-2: #4c5c63; --ink-3: #74838a; --line: #d8e0df; --line-2: #e8eeed;
+  --accent: #0e6b66; --accent-ink: #ffffff; --accent-soft: #e2f0ee;
+  --fix: #b42318; --fix-soft: #fdeceb; --warn: #9a5a06; --warn-soft: #fdf2e1; --ok: #1e7a46; --ok-soft: #e4f4ea;
+  --shadow: 0 1px 2px rgba(23, 36, 43, .06), 0 4px 16px rgba(23, 36, 43, .05);
+  --display: "Literata", Georgia, "Times New Roman", serif;
+  --body: "Be Vietnam Pro", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, "Courier New", monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a3b4b6; --ink-3: #7d9093; --line: #2b3b3e; --line-2: #22312f;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --fix: #f8746a; --fix-soft: #3a1c1a; --warn: #f2b552; --warn-soft: #372a13; --ok: #62d18f; --ok-soft: #12301f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a3b4b6; --ink-3: #7d9093; --line: #2b3b3e; --line-2: #22312f;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --fix: #f8746a; --fix-soft: #3a1c1a; --warn: #f2b552; --warn-soft: #372a13; --ok: #62d18f; --ok-soft: #12301f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+.mono { font-family: var(--mono); font-size: .86em; letter-spacing: -.01em; }
+.num { font-variant-numeric: tabular-nums; }
+code.tok { font-family: var(--mono); font-size: .9em; white-space: nowrap; background: var(--line-2); color: var(--ink); border-radius: 4px; padding: 1px 5px; }
+
+/* đầu trang */
+.top { border-bottom: 1px solid var(--line); background: var(--sheet); }
+.top .wrap { padding-block: 28px 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px 32px; align-items: end; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.2vw, 42px); line-height: 1.1; margin-top: 6px; letter-spacing: -.01em; }
+.lede { margin-top: 10px; max-width: 62ch; color: var(--ink-2); }
+/* 1.7.0: ba mốc theo công văn của Ban Tổ chức Thành ủy, một hàng dưới tiêu đề */
+.ms-wrap { display: grid; gap: 8px; min-width: 0; }
+.milestones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ms-line { font-size: 13px; color: var(--ink-2); }
+.ms { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 12px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 10px 14px 10px 10px; background: var(--paper); min-width: 0; }
+.ms .date { grid-row: span 3; text-align: center; border-right: 1px dashed var(--line); padding-right: 12px; }
+.ms .dd { font-family: var(--mono); font-size: 26px; font-weight: 500; line-height: 1; display: block; }
+.ms .mm { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.ms b { font-size: 14px; }
+.ms .left { font-size: 13px; color: var(--accent); font-weight: 600; }
+.ms .note { font-size: 12px; color: var(--ink-3); line-height: 1.35; }
+.ms.past .left { color: var(--fix); }
+
+/* bố cục chính */
+main { padding-block: 22px 40px; display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: start; }
+.flow, .flow-form { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.step { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 20px; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.step-h { display: flex; align-items: center; gap: 12px; }
+.step-n { width: 30px; height: 30px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 15px; flex: none; font-variant-numeric: tabular-nums; }
+.step-h h2 { font-size: 18px; font-weight: 600; }
+.step-h .aside { margin-left: auto; font-size: 13px; color: var(--ink-3); }
+
+/* bước 1: bốn mẫu */
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.choice { position: relative; display: grid; gap: 6px; border: 1.5px solid var(--line); border-radius: var(--r); padding: 14px 14px 14px 44px; cursor: pointer; background: var(--sheet); transition: border-color .15s; min-width: 0; }
+.choice:hover { border-color: var(--ink-3); }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice .dot { position: absolute; left: 14px; top: 16px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--ink-3); background: var(--sheet); }
+.choice:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.choice:has(input:checked) .dot { border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--sheet); background: var(--accent); }
+.choice:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.choice .t { font-weight: 600; line-height: 1.35; }
+.choice .s { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.choice .facts { font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.xform { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-family: var(--mono); font-size: 12.5px; min-width: 0; }
+.xform .from { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--line); overflow-wrap: anywhere; }
+.xform .arrow { color: var(--ink-3); }
+.xform .to { color: var(--accent); font-weight: 500; overflow-wrap: anywhere; }
+.choice .dest { justify-self: start; font-size: 12px; font-weight: 600; border-radius: 99px; padding: 1px 9px; background: var(--line-2); color: var(--ink-2); }
+.subpick { display: grid; grid-template-columns: minmax(0, 1fr); gap: 5px; border: 1px solid var(--accent); border-radius: var(--r); padding: 12px 14px; background: var(--accent-soft); }
+.subpick label { font-weight: 600; font-size: 14px; }
+.subpick .hint { font-size: 12.5px; color: var(--ink-2); line-height: 1.4; }
+.dest-note { font-size: 13.5px; color: var(--ink); border-left: 3px solid var(--accent); padding: 4px 0 4px 10px; max-width: 80ch; }
+.codeview { font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 500; padding: 9px 0; overflow-wrap: anywhere; }
+
+/* bước 2: đơn vị */
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.field { display: grid; gap: 5px; min-width: 0; align-content: start; }
+.field.wide { grid-column: 1 / -1; }
+.field label { font-weight: 600; font-size: 14px; }
+.field .hint { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
+.field .err { font-size: 12.5px; color: var(--fix); line-height: 1.4; }
+.dateview { font-size: 13.5px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+/* 1.6.0: số liệu đơn vị để điền sẵn */
+.sldv { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); min-width: 0; }
+.sldv > summary { cursor: pointer; padding: 10px 12px; font-size: 14px; font-weight: 600; }
+.sldv > summary small { font-weight: 400; color: var(--ink-3); }
+.sldv-body { display: grid; gap: 12px; padding: 0 12px 12px; min-width: 0; }
+.sldv .hint { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
+.sldv .hint.ok { color: var(--ok); }
+.sldv .hint:empty { display: none; }
+.sldv-h { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; font-size: 14px; margin-bottom: 6px; }
+.ppl { max-height: 360px; overflow-y: auto; border: 1px solid var(--line-2); border-radius: 8px; background: var(--sheet); }
+.ppl:empty { display: none; }
+.ppl-row { display: grid; grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr) 4.6em; gap: 8px; align-items: center; padding: 6px 10px; border-bottom: 1px solid var(--line-2); font-size: 13.5px; }
+.ppl-row:last-child { border-bottom: 0; }
+.ppl-row .mono { overflow-wrap: anywhere; color: var(--ink-2); }
+.ppl-row label { font-weight: 400; font-size: 13.5px; overflow-wrap: anywhere; }
+.ppl-row input { padding: 6px 8px; text-align: right; }
+/* 1.7.0: bảng "Nhân sự theo mã ngạch" — dòng xếp chồng khi khung hẹp, năm cột khi khung từ 620 px (container query) */
+.ng { display: grid; gap: 8px; min-width: 0; container-type: inline-size; }
+.ng-head { display: none; }
+.ng-list { max-height: 440px; overflow-y: auto; overflow-x: hidden; border: 1px solid var(--line-2); border-radius: 8px; background: var(--sheet); }
+.ng-row { display: grid; grid-template-columns: minmax(0, 1fr) 5.4em; grid-template-areas: "ma n" "ten ten" "vt vt" "act act"; gap: 6px 8px; align-items: center; padding: 8px 10px; border-bottom: 1px solid var(--line-2); min-width: 0; }
+.ng-row:last-child { border-bottom: 0; }
+.ng-row .ng-ma { grid-area: ma; } .ng-row .ng-n { grid-area: n; } .ng-row .ng-vt { grid-area: vt; } .ng-row .ng-ten { grid-area: ten; } .ng-row .ng-btns { grid-area: act; }
+.ng-row input[type="text"], .ng-row select { padding: 6px 8px; font-size: 14px; }
+.ng-row .ng-ma { font-family: var(--mono); font-size: 13.5px; }
+.ng-row .ng-n { text-align: right; }
+.ng-ten { font-size: 12.5px; color: var(--ink-2); line-height: 1.35; overflow-wrap: anywhere; min-width: 0; }
+.ng-ten:empty { display: none; }
+.ng-ten.miss { color: var(--warn); }
+.ng-btns { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.btn.sm { padding: 5px 10px; font-size: 13px; font-weight: 500; }
+@container (min-width: 620px) {
+  .ng-head, .ng-row { grid-template-columns: minmax(0, 8.4em) minmax(0, 1fr) 4.8em minmax(0, 1.6fr) auto; grid-template-areas: "ma ten n vt act"; }
+  .ng-head { display: grid; gap: 8px; padding: 0 10px; font-size: 12px; font-weight: 600; color: var(--ink-2); }
+  .ng-head span:nth-child(1) { grid-area: ma; } .ng-head span:nth-child(2) { grid-area: ten; } .ng-head span:nth-child(3) { grid-area: n; text-align: right; }
+  .ng-head span:nth-child(4) { grid-area: vt; } .ng-head span:nth-child(5) { grid-area: act; }
+  .ng-btns { flex-wrap: nowrap; }
+  .ng-ten:empty { display: block; }
+}
+.ng-sum { display: grid; gap: 2px; font-size: 13px; color: var(--ink-2); min-width: 0; overflow-wrap: anywhere; }
+.ng-sum b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.ng-sum .warn { color: var(--warn); font-weight: 600; }
+.ng-act { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.ng-act .btn { white-space: normal; text-align: left; }
+.ng-msg { font-size: 13px; line-height: 1.4; }
+.ng-msg.err { color: var(--fix); }
+.ng-msg.ok { color: var(--ok); }
+.parts .warns { padding: 6px 12px 12px; }
+select, input[type="text"], input[type="date"], textarea { width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); padding: 9px 11px; font-size: 15px; }
+select:hover, input[type="text"]:hover, input[type="date"]:hover, textarea:hover { border-color: var(--ink-3); }
+textarea.name { resize: vertical; line-height: 1.45; min-height: 2.6em; field-sizing: content; font-family: inherit; }
+input.code { font-family: var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--fix); }
+.names { border-top: 1px dashed var(--line); padding-top: 12px; display: grid; gap: 6px; }
+.names .k { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.fname { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 13.5px; }
+.fname .mono { overflow-wrap: anywhere; }
+.fname .tag { font-size: 12px; color: var(--ink-3); white-space: nowrap; }
+.xl-ico { width: 20px; height: 22px; display: block; }
+
+/* bước 3 */
+.actions { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--line); background: var(--sheet); border-radius: 8px; padding: 9px 16px; cursor: pointer; font-weight: 500; font-size: 14.5px; white-space: nowrap; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; padding: 10px 22px; }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.does { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13.5px; color: var(--ink-2); max-width: 75ch; }
+.does b { color: var(--ink); font-weight: 600; }
+.progress { border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; background: var(--paper); }
+.progress .bar { height: 6px; border-radius: 99px; background: var(--line-2); overflow: hidden; margin-top: 8px; }
+.progress .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.alert { border-radius: var(--r); padding: 10px 14px; font-size: 14px; border: 1px solid var(--line); background: var(--sheet); }
+.alert.err { border-color: var(--fix); background: var(--fix-soft); }
+.alert.warn { border-color: transparent; background: var(--warn-soft); }
+.result { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+.result h3 { font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.result h3 .ok { width: 20px; height: 20px; border-radius: 50%; background: var(--ok); display: inline-grid; place-items: center; flex: none; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.tile { border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; display: grid; gap: 2px; align-content: start; min-width: 0; background: var(--paper); }
+.tile .k { font-size: 13px; color: var(--ink-2); }
+.tile .v { font-size: 28px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.tile .s { font-size: 12px; color: var(--ink-3); overflow-wrap: anywhere; }
+details.parts { border: 1px solid var(--line-2); border-radius: 8px; background: var(--sheet); }
+details.parts > summary { cursor: pointer; padding: 9px 12px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); }
+.tbl-wrap { overflow-x: auto; border-top: 1px solid var(--line-2); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 6px 12px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+th { font-weight: 600; font-size: 12px; color: var(--ink-2); background: var(--paper); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+.files { display: grid; gap: 8px; }
+.file { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; background: var(--sheet); }
+.file .meta { min-width: 0; display: grid; gap: 1px; }
+.file .meta .mono { overflow-wrap: anywhere; font-size: 13px; color: var(--ink); }
+.file .meta small { color: var(--ink-3); font-size: 12.5px; }
+.file.off { background: var(--paper); border-style: dashed; }
+.stale { font-size: 13px; color: var(--warn); }
+.kept { font-size: 13px; color: var(--ink-2); max-width: 80ch; }
+
+/* bước 4: nạp phiếu */
+.lead-s { font-size: 14px; color: var(--ink-2); max-width: 72ch; }
+input[type="file"] { width: 100%; min-width: 0; font-size: 13.5px; color: var(--ink-2); border: 1px dashed var(--line); border-radius: 8px; padding: 7px; background: var(--paper); }
+input[type="file"]::file-selector-button { font: inherit; font-weight: 500; color: var(--ink); border: 1px solid var(--line); background: var(--sheet); border-radius: 6px; padding: 6px 12px; margin-right: 10px; cursor: pointer; }
+input[type="file"]:hover::file-selector-button { border-color: var(--accent); }
+.nap-sum { font-size: 14px; color: var(--ink-2); }
+.nap-sum b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.warns { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.warns > li { border: 1px solid transparent; border-radius: 8px; padding: 9px 12px; display: grid; gap: 4px; font-size: 13.5px; min-width: 0; }
+.warns > li.err { border-color: var(--fix); background: var(--fix-soft); }
+.warns > li.warn { background: var(--warn-soft); }
+.warns > li.info { background: var(--accent-soft); }
+.warns .h { font-weight: 600; display: flex; gap: 6px 8px; align-items: baseline; flex-wrap: wrap; }
+.warns .h .n { font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.warns ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; display: grid; gap: 2px; }
+.warns ul li { overflow-wrap: anywhere; }
+.opt { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; background: var(--paper); cursor: pointer; font-size: 14px; }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.opt input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--accent); }
+.opt small { display: block; color: var(--ink-2); font-size: 12.5px; line-height: 1.45; margin-top: 2px; }
+.regen { border: 1px dashed var(--line); border-radius: var(--r); background: var(--sheet); }
+.regen > summary { cursor: pointer; padding: 10px 12px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); }
+.regen-body { display: grid; gap: 10px; padding: 0 12px 12px; }
+.gy { font-size: 13.5px; color: var(--ink-2); }
+.gy b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.picked-wrap { display: grid; gap: 6px; margin-top: 2px; }
+.picked { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.picked li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 8px; padding: 4px 4px 4px 10px; background: var(--sheet); font-size: 13px; min-width: 0; }
+.picked .mono { overflow-wrap: anywhere; color: var(--ink); }
+.picked .sz { color: var(--ink-3); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.picked .x { border: 1px solid transparent; background: none; width: 34px; height: 34px; border-radius: 6px; cursor: pointer; color: var(--ink-2); font-size: 18px; line-height: 1; display: grid; place-items: center; }
+.picked .x:hover { border-color: var(--fix); color: var(--fix); }
+.picked-act { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--ink-3); }
+.linkbtn { border: 0; background: none; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; padding: 6px 0; text-decoration: underline; text-underline-offset: 2px; }
+.tiles.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tiles-cap { font-size: 13px; color: var(--ink-2); margin-bottom: -4px; }
+.tile.bad { border-color: var(--fix); background: var(--fix-soft); }
+.flist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.flist li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; align-items: baseline; border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 12px; background: var(--sheet); font-size: 13.5px; min-width: 0; }
+.flist .tag { font-size: 12px; font-weight: 600; border-radius: 99px; padding: 1px 9px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.flist .mono { overflow-wrap: anywhere; color: var(--ink); }
+.flist small { grid-column: 2; color: var(--ink-3); font-size: 12.5px; overflow-wrap: anywhere; }
+.flist li.no { border-color: var(--fix); background: var(--fix-soft); }
+.flist li.no .tag { background: var(--fix); color: var(--sheet); }
+.flist li.no small { color: var(--ink-2); }
+.conf { border: 1px solid var(--fix); background: var(--fix-soft); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; font-size: 13.5px; min-width: 0; }
+.conf .h { font-weight: 600; }
+.conf > ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.conf > ul > li { overflow-wrap: anywhere; }
+.conf .vals { margin: 3px 0 0; padding-left: 16px; color: var(--ink-2); font-size: 13px; display: grid; gap: 2px; }
+.conf .vals b { color: var(--ink); font-weight: 600; }
+.check-next { font-size: 14px; color: var(--ink); }
+.check-next a { color: var(--accent); font-weight: 600; text-underline-offset: 2px; }
+.next li.here::before { background: var(--accent); color: var(--accent-ink); }
+.next a.jump { color: var(--accent); font-weight: 600; }
+
+/* việc cần làm tiếp */
+.next { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 20px; display: grid; gap: 12px; min-width: 0; position: sticky; top: calc(14px + env(safe-area-inset-top, 0px)); }
+.next h2 { font-family: var(--display); font-size: 21px; font-weight: 700; }
+.next ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: s; }
+.next li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 14px; counter-increment: s; }
+.next li::before { content: counter(s); width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-size: 12.5px; font-weight: 700; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.next li small { display: block; color: var(--ink-3); font-size: 12.5px; line-height: 1.45; margin-top: 1px; }
+.next a { color: var(--accent); font-weight: 600; text-underline-offset: 2px; }
+.next .dates { border-top: 1px dashed var(--line); padding-top: 10px; font-size: 13px; color: var(--ink-2); display: grid; gap: 3px; }
+.next .dates b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 9px 16px; border-radius: 8px; font-size: 14px; box-shadow: var(--shadow); z-index: 20; max-width: calc(100% - 32px); }
+footer { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
+footer .wrap { padding-block: 16px 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; }
+
+@media (max-width: 980px) {
+  main { grid-template-columns: minmax(0, 1fr); }
+  .next { position: static; }
+}
+@media (max-width: 640px) {
+  body { font-size: 14.5px; }
+  .choices, .fields { grid-template-columns: minmax(0, 1fr); }
+  .step { padding: 16px 14px 18px; }
+  .milestones { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles .tile:last-child { grid-column: span 2; }
+  .tiles.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles.four .tile:last-child { grid-column: auto; }
+  .flist li { grid-template-columns: minmax(0, 1fr); }
+  .flist .tag { justify-self: start; }
+  .flist small { grid-column: 1; }
+  .tile .v { font-size: 24px; }
+  .fname { grid-template-columns: 22px minmax(0, 1fr); }
+  .fname .tag { grid-column: 2; }
+  .file { grid-template-columns: 24px minmax(0, 1fr); }
+  .file .btn { grid-column: 1 / -1; }
+  .btn.primary { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .progress .bar i, .choice { transition: none; } }
+</style>
+</head>
+<body>
+<div class="v360-bar"><div class="v360-bar-in">
+  <a class="v360-brand" href="index.html"><span>Vị trí việc làm <b>360</b></span></a>
+  <nav class="v360-nav" aria-label="Các trang"><a href="index.html">Trang chủ</a><a href="tao-tep.html" aria-current="page">Tạo tệp đơn vị</a><a href="ra-soat.html">Rà soát 9 biểu</a><a href="bam-gio.html">Bấm giờ</a></nav>
+</div></div>
+
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Hướng dẫn 13-HD/BTCTU · bản 1.7.0</div>
+      <h1>Tạo tệp đơn vị</h1>
+      <p class="lede">Tạo tệp vị trí việc làm riêng cho khối Đảng, khối chính quyền, từng đơn vị sự nghiệp của xã, phường và cho trường THCS–THPT từ mẫu chuẩn, kèm phiếu thu số liệu. Tệp được tạo ngay trên máy, không gửi đi đâu.</p>
+    </div>
+    <div class="ms-wrap">
+      <div class="milestones" id="milestones" aria-label="Mốc thời gian"></div>
+      <p class="ms-line">Kỳ sản lượng 01/10/2025–30/9/2026; nhân lực có mặt chốt ngày 30/9/2026; dự báo từng năm 2027–2031.</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="flow">
+  <form class="flow-form" id="form" novalidate>
+    <section class="step" aria-labelledby="h1s">
+      <div class="step-h"><span class="step-n" aria-hidden="true">1</span><h2 id="h1s">Chọn mẫu</h2></div>
+      <div class="choices" role="radiogroup" aria-labelledby="h1s">
+        <label class="choice">
+          <input type="radio" name="kind" id="kindDang" value="dang" checked>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="t">Khối Đảng, MTTQ cấp xã (mẫu v11)</span>
+          <span class="s">Đảng ủy, MTTQ và các tổ chức chính trị – xã hội của 72 xã, 31 phường. Mã mẫu <code class="tok">XXX-</code> đổi thành mã xã, phường.</span>
+          <span class="xform" aria-hidden="true"><span class="from">XXX-VP-CM-03</span><span class="arrow">→</span><span class="to" id="exDang">X52-VP-CM-03</span></span>
+          <span class="facts">143 nhiệm vụ · 735 công việc · 49 VTVL</span>
+          <span class="dest">Gửi Ban Tổ chức Thành ủy</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="kind" id="kindUbnd" value="ubnd">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="t">Khối chính quyền cấp xã – HĐND, UBND (mẫu v9)</span>
+          <span class="s">HĐND, UBND và các cơ quan chuyên môn của xã, phường. Mã mẫu <code class="tok">XXX-</code> đổi thành mã xã; “xã XXX” thành tên xã.</span>
+          <span class="xform" aria-hidden="true"><span class="from">XXX-PKT-CM-01</span><span class="arrow">→</span><span class="to" id="exUbnd">X52-PKT-CM-01</span></span>
+          <span class="facts">184 nhiệm vụ · 184 công việc · 48 VTVL</span>
+          <span class="dest">Gửi Sở Nội vụ</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="kind" id="kindDvsn" value="dvsn">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="t">Đơn vị sự nghiệp thuộc UBND xã (mẫu v2)</span>
+          <span class="s">Mỗi đơn vị một tệp: trường mầm non, tiểu học, THCS, trung tâm dịch vụ, trạm y tế, ban quản lý dự án. Mã mẫu đổi thành mã xã và mã đơn vị.</span>
+          <span class="xform" aria-hidden="true"><span class="from" id="exDvsnFrom">XXX-TH-CM-01</span><span class="arrow">→</span><span class="to" id="exDvsn">X52-TH01-CM-01</span></span>
+          <span class="facts" id="factsDvsn">17 nhiệm vụ · 45 công việc · 16 VTVL</span>
+          <span class="dest">Gửi Sở Nội vụ</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="kind" id="kindTruong" value="truong">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="t">Trường THCS–THPT thuộc Sở (mẫu v3)</span>
+          <span class="s">Trường THCS và THPT công lập thuộc Sở Giáo dục và Đào tạo. Mã mẫu <code class="tok">SGDDT-THCSTHPT-</code> đổi thành mã trường.</span>
+          <span class="xform" aria-hidden="true"><span class="from">SGDDT-THCSTHPT-CM-03</span><span class="arrow">→</span><span class="to" id="exTruong">SGDDT-HHN-CM-03</span></span>
+          <span class="facts">22 nhiệm vụ · 140 công việc · 31 VTVL</span>
+        </label>
+      </div>
+      <div class="subpick" id="dvPick" hidden>
+        <label for="dvType">Loại đơn vị sự nghiệp</label>
+        <select id="dvType">
+          <option value="MN">Trường mầm non</option>
+          <option value="TH" selected>Trường tiểu học</option>
+          <option value="THCS">Trường THCS</option>
+          <option value="DVTH">Trung tâm Dịch vụ tổng hợp</option>
+          <option value="TYT">Trạm Y tế</option>
+          <option value="BQLDA">Ban Quản lý dự án đầu tư xây dựng</option>
+        </select>
+        <span class="hint">Mỗi loại có mẫu riêng (bản v2, đã rà soát số chỗ thay mã). Đơn vị khác loại thì tạo tệp khác.</span>
+      </div>
+    </section>
+
+    <section class="step" aria-labelledby="h2s">
+      <div class="step-h"><span class="step-n" aria-hidden="true">2</span><h2 id="h2s">Đơn vị</h2></div>
+      <div class="fields" id="fieldsXa">
+        <div class="field wide" id="fXa">
+          <label for="xa">Xã, phường</label>
+          <select id="xa"><option value="">Chọn mã và tên xã, phường…</option></select>
+          <span class="hint">Theo Phụ lục 1 kèm HD 13-HD/BTCTU, bảng 3a: 72 xã (X01–X72), 31 phường (P01–P31).</span>
+          <span class="err" id="eXa" hidden></span>
+        </div>
+      </div>
+      <div class="fields" id="fieldsDang">
+        <div class="field wide" id="fNameDang">
+          <label for="nameDang">Tên đơn vị</label>
+          <textarea id="nameDang" class="name" rows="2" autocomplete="off" spellcheck="false" placeholder="Đảng ủy xã … (X..) – khối Đảng, MTTQ và các tổ chức chính trị – xã hội"></textarea>
+          <span class="hint">Tự điền theo xã, phường đã chọn. Sửa được.</span>
+          <span class="err" id="eNameDang" hidden></span>
+        </div>
+      </div>
+      <div class="fields" id="fieldsDvsn" hidden>
+        <div class="field" id="fDvCode">
+          <label for="dvCode">Mã đơn vị</label>
+          <input type="text" id="dvCode" class="code" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="TH01">
+          <span class="hint">Mã tạm đến khi Sở Nội vụ cấp; nên giữ chữ chỉ loại ở đầu (MN, TH, THCS…); hai trường cùng loại trong một xã dùng TH01, TH02…</span>
+          <span class="err" id="eDvCode" hidden></span>
+        </div>
+        <div class="field">
+          <span class="lbl" style="font-weight:600;font-size:14px">Mã đầy đủ</span>
+          <span class="codeview" id="dvFull" aria-live="polite">X..-TH01-CM-01</span>
+          <span class="hint">Ví dụ một mã VTVL của đơn vị sau khi tách tệp.</span>
+        </div>
+        <div class="field wide" id="fNameDvsn">
+          <label for="nameDvsn">Tên đơn vị</label>
+          <textarea id="nameDvsn" class="name" rows="2" autocomplete="off" spellcheck="false" placeholder="Trường Tiểu học … (mã tạm TH01)"></textarea>
+          <span class="hint">Bắt buộc. Ghi đúng tên trên con dấu; thêm “(mã tạm …)” nếu dùng mã tạm.</span>
+          <span class="err" id="eNameDvsn" hidden></span>
+        </div>
+      </div>
+      <div class="fields" id="fieldsTruong" hidden>
+        <div class="field" id="fCode">
+          <label for="code">Mã trường</label>
+          <input type="text" id="code" class="code" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="HHN">
+          <span class="hint">Mã trường do Sở cấp, 2–10 ký tự A–Z, 0–9, ví dụ HHN. Chưa có thì đặt mã tạm. Không nhập THCSTHPT (mã mẫu).</span>
+          <span class="err" id="eCode" hidden></span>
+        </div>
+        <div class="field" id="fNameTruong">
+          <label for="nameTruong">Tên trường</label>
+          <textarea id="nameTruong" class="name" rows="2" autocomplete="off" spellcheck="false" placeholder="Trường THCS và THPT … (mã tạm …)"></textarea>
+          <span class="hint">Ghi đúng tên trên con dấu; thêm “(mã tạm …)” nếu dùng mã tạm.</span>
+          <span class="err" id="eNameTruong" hidden></span>
+        </div>
+      </div>
+      <div class="fields">
+        <div class="field" id="fDate">
+          <label for="date">Ngày lập tệp</label>
+          <input type="date" id="date" min="2026-01-01" max="2027-12-31">
+          <span class="dateview" id="dateVn" aria-live="polite"></span>
+          <span class="hint">Ghi vào tên tệp và trang nhật ký.</span>
+          <span class="err" id="eDate" hidden></span>
+        </div>
+      </div>
+      <details class="sldv" id="sldv">
+        <summary>Số liệu đơn vị để điền sẵn <small>(không bắt buộc)</small></summary>
+        <div class="sldv-body">
+          <p class="hint">Kỳ sản lượng 01/10/2025–30/9/2026. Nhân lực: người có mặt ngày 30/9/2026, đối chiếu bảng lương tháng 9/2026. Máy dùng các số này để điền sẵn số sản phẩm và trang D1; mọi số điền sẵn đều sửa được.</p>
+          <p class="hint ok" id="sldvNote" aria-live="polite"></p>
+          <div class="fields" id="sldvFields"></div>
+          <div class="ng" id="ng" hidden>
+            <div class="sldv-h"><b>Nhân sự theo mã ngạch</b><span class="hint" id="ngNote"></span></div>
+            <p class="hint">Gõ số người từng mã ngạch như trên bảng lương tháng 9/2026. Hiệu trưởng, phó hiệu trưởng, người làm việc khác ngạch: bấm Tách rồi chọn vị trí đang làm.</p>
+            <div class="ng-head" aria-hidden="true"><span>Mã ngạch</span><span>Tên</span><span>Số người</span><span>Xếp vào vị trí</span><span></span></div>
+            <div class="ng-list" id="ngList"></div>
+            <div class="ng-sum" id="ngSum" aria-live="polite"></div>
+            <div class="ng-act"><button type="button" class="btn" id="ngAdd">Thêm dòng</button><button type="button" class="btn" id="ngPush">Đưa vào bảng số người theo vị trí</button></div>
+            <p class="ng-msg" id="ngMsg" role="status" aria-live="polite" hidden></p>
+            <datalist id="ngDm"></datalist>
+          </div>
+          <div class="sldv-ppl">
+            <div class="sldv-h"><b>Số người hiện có theo vị trí</b><span class="hint" id="sldvPplNote"></span></div>
+            <div class="ppl" id="sldvPpl"></div>
+          </div>
+        </div>
+      </details>
+      <p class="dest-note" id="destNote" hidden></p>
+      <div class="names" aria-live="polite">
+        <span class="k">Tệp sẽ tạo</span>
+        <div class="fname"><svg class="xl-ico" viewBox="0 0 20 22" aria-hidden="true"><path d="M3 1h10l5 5v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.3"/><path d="M6 10l4 6M10 10l-4 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg><span class="mono" id="pvUnit"></span><span class="tag">tệp đơn vị</span></div>
+        <div class="fname"><svg class="xl-ico" viewBox="0 0 20 22" aria-hidden="true"><path d="M3 1h10l5 5v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="var(--sheet)" stroke="var(--ink-3)" stroke-width="1.3"/><path d="M5.5 10h8M5.5 13h8M5.5 16h5" stroke="var(--ink-3)" stroke-width="1.3" stroke-linecap="round"/></svg><span class="mono" id="pvForm"></span><span class="tag">phiếu thu số liệu</span></div>
+        <div class="fname" id="pvZipRow" hidden><svg class="xl-ico" viewBox="0 0 20 22" aria-hidden="true"><path d="M3 1h10l5 5v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="var(--sheet)" stroke="var(--accent)" stroke-width="1.3"/><path d="M9 3v2M11 5v2M9 7v2M11 9v2M8.5 12h3v4h-3z" stroke="var(--accent)" stroke-width="1.2" fill="none"/></svg><span class="mono" id="pvZip"></span><span class="tag">phiếu từng vị trí</span></div>
+        <div class="fname" id="pvDraftRow" hidden><svg class="xl-ico" viewBox="0 0 20 22" aria-hidden="true"><path d="M3 1h10l5 5v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.3"/><path d="M6 10l4 6M10 10l-4 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg><span class="mono" id="pvDraft"></span><span class="tag">tệp đơn vị dự thảo</span></div>
+      </div>
+    </section>
+
+    <section class="step" aria-labelledby="h3s">
+      <div class="step-h"><span class="step-n" aria-hidden="true">3</span><h2 id="h3s">Tạo tệp</h2></div>
+      <ul class="does" id="does"></ul>
+      <label class="opt" for="optViTri"><input type="checkbox" id="optViTri"><span><b>Thêm phiếu riêng từng vị trí</b><small>Một tệp .zip: mỗi vị trí một phiếu, chỉ gồm công việc và căn cứ gợi ý của vị trí đó, điền sẵn như phiếu đầy đủ. Phiếu vị trí không có trang D1 và thông tin đơn vị: đầu mối điền hai phần này ở phiếu đầy đủ, để một người giữ hai vị trí không bị tính hai lần.</small></span></label>
+      <div class="actions">
+        <button class="btn primary" id="go" type="submit">Tạo tệp</button>
+        <span class="stale" id="stale" hidden>Thông tin đã đổi. Bấm Tạo tệp để tạo lại.</span>
+      </div>
+      <div class="progress" id="progress" hidden role="status" aria-live="polite">
+        <div id="progressText">Đang mở mẫu…</div>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+      <div id="errors" aria-live="polite"></div>
+      <div class="result" id="result" hidden aria-live="polite"></div>
+      <details class="regen" id="regen">
+        <summary>Tạo lại phiếu từ tệp đơn vị đã sửa (khi đổi phương pháp ở Biểu C3)</summary>
+        <div class="regen-body">
+          <p class="hint">Gợi ý phút/SP chỉ có ở vị trí tính theo PP2. Đổi phương pháp ở Biểu C3 thì chọn tệp đơn vị đã sửa ở đây: trang đọc Biểu C3, Biểu B1 và Danh mục sản phẩm của tệp để tạo lại phiếu (và zip từng vị trí nếu đánh dấu ô trên). Tệp đơn vị không bị sửa.</p>
+          <div class="field"><label for="regenUnit">Tệp đơn vị (.xlsx)</label>
+            <input type="file" id="regenUnit" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></div>
+          <div id="regenErrors" aria-live="polite"></div>
+          <div class="result" id="regenResult" hidden aria-live="polite"></div>
+        </div>
+      </details>
+    </section>
+  </form>
+
+  <section class="step" id="buoc-4" aria-labelledby="h4s">
+    <div class="step-h"><span class="step-n" aria-hidden="true">4</span><h2 id="h4s">Nạp phiếu đã điền</h2></div>
+    <p class="lead-s">Ghép số liệu của một hay nhiều phiếu vào tệp đơn vị ngay trên máy, không gửi tệp đi đâu. Phiếu đầy đủ và phiếu một người được gộp theo mã công việc; hai phiếu ghi khác nhau thì báo xung đột để sửa, không tự chọn. Phút/SP tính lại từ giờ bắt đầu, giờ kết thúc và số sản phẩm; ô trống để trống, không tự đặt số.</p>
+    <div class="fields">
+      <div class="field">
+        <label for="napUnit">Tệp đơn vị (.xlsx)</label>
+        <input type="file" id="napUnit" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+        <span class="hint">Tệp tạo ở bước 3, ví dụ X52_K2526_v1_31102026.xlsx hoặc X52-TH01_K2526_v1_31102026.xlsx. Phiếu của khối hoặc đơn vị khác (kể cả cùng mã xã) bị từ chối.</span>
+      </div>
+      <div class="field" id="fNapDate">
+        <label for="napDate">Ngày nạp</label>
+        <input type="date" id="napDate" min="2026-01-01" max="2027-12-31">
+        <span class="dateview" id="napDateVn" aria-live="polite"></span>
+        <span class="hint">Ghi vào tên tệp mới và trang nhật ký.</span>
+      </div>
+      <div class="field wide">
+        <label for="napForm">Phiếu đã điền (.xlsx, chọn được nhiều tệp)</label>
+        <input type="file" id="napForm" multiple accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+        <span class="hint">Phiếu đầy đủ của bước 3 (bản đã điền, có thể mỗi người một bản), phiếu riêng từng vị trí và phiếu một người xuất từ <a href="bam-gio.html" target="_blank" rel="noopener">trang Bấm giờ</a>. Chọn thêm lần nữa để bổ sung tệp.</span>
+        <div class="picked-wrap" id="napPickedWrap" hidden>
+          <ul class="picked" id="napPicked" aria-label="Phiếu đã chọn"></ul>
+          <div class="picked-act"><span id="napPickedN"></span><button type="button" class="linkbtn" id="napClear">Bỏ hết phiếu</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="hint" id="napHint">Chọn tệp đơn vị và ít nhất một phiếu; trang tự đọc, gộp và cho xem trước trước khi tải.</p>
+    <div class="progress" id="napProgress" hidden role="status" aria-live="polite">
+      <div id="napProgressText">Đang đọc tệp…</div>
+      <div class="bar"><i id="napProgressBar"></i></div>
+    </div>
+    <div id="napErrors" aria-live="polite"></div>
+    <div class="result" id="napResult" hidden aria-live="polite"></div>
+  </section>
+  </div>
+
+  <aside class="next" aria-labelledby="nextH">
+    <h2 id="nextH">Làm gì tiếp</h2>
+    <ol>
+      <li><span>Phát phiếu cho từng người theo vị trí.<small>Phiếu đã điền sẵn gợi ý ở ô màu cam: mỗi người sửa theo thực tế, đếm số sản phẩm từ sổ sách và ghi rõ nguồn. Dòng giữ nguyên phút gợi ý được ghi là mức tham khảo, chưa đo. Không ghi họ tên, số định danh.</small></span></li>
+      <li><span>Mỗi người có thể điền bản sao phiếu riêng hoặc dùng <a href="bam-gio.html" target="_blank" rel="noopener">trang Bấm giờ</a>; bước 4 tự gộp.<small>Hai phiếu ghi khác nhau cho cùng một việc sẽ được liệt kê để sửa rồi nạp lại.</small></span></li>
+      <li><span>Đo thời gian 3–5 lần mỗi việc chính.<small>Ghi giờ bắt đầu, kết thúc và số sản phẩm vào trang Do_thoi_gian của phiếu.</small></span></li>
+      <li><span>Gửi phiếu cho đầu mối.<small>Thu phiếu trước Hội nghị ngày 03/11/2026 để hoàn thiện B1, B2, C3, D1, D2 tại Hội nghị.</small></span></li>
+      <li class="here"><span>Nạp phiếu vào tệp ngay trên trang này, ở <a class="jump" href="#buoc-4">bước 4</a>.<small>Chọn cùng lúc mọi phiếu đã thu. Tệp mới tăng số lần nộp, ví dụ v1 → X52_K2526_v2_….xlsx; nhật ký ghi tên các phiếu.</small></span></li>
+      <li><span>Kiểm bằng <a href="ra-soat.html" target="_blank" rel="noopener">Rà soát 9 biểu</a> trước khi nộp.<small>Sửa hết mục “Phải sửa”, bổ sung căn cứ còn thiếu.</small></span></li>
+      <li><span>Nộp đúng nơi.<small>Ở xã: khối Đảng, MTTQ gửi Ban Tổ chức Thành ủy; khối chính quyền và đơn vị sự nghiệp gửi Sở Nội vụ; không khai trùng người giữa các khối.</small></span></li>
+    </ol>
+    <div class="dates">
+      <span>Trước <b>03/11</b>: chốt bộ dữ liệu gốc A1, A2, C1, C2; ban hành quyết định phê duyệt danh mục sản phẩm.</span>
+      <span><b>03/11</b> (cả ngày, Hội trường Thành ủy): Hội nghị trực tiếp hoàn thiện B1, B2, C3, D1, D2.</span>
+      <span>Trước <b>13 giờ ngày 04/11</b>: gửi văn bản báo cáo hoàn thiện bộ biểu về Ban Tổ chức Thành ủy.</span>
+      <span>Kỳ sản lượng 01/10/2025–30/9/2026; nhân lực có mặt chốt ngày 30/9/2026; dự báo từng năm 2027–2031.</span>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tạo tệp đơn vị · bản 1.7.0 (02/11/2026) · Căn cứ Hướng dẫn 13-HD/BTCTU, Phụ lục 1 (bảng 3a) và bộ mẫu K2526: khối Đảng v11, khối chính quyền v9, đơn vị sự nghiệp v2, trường THCS–THPT v3.</span>
+    <span>Cùng bộ với <a href="ra-soat.html" target="_blank" rel="noopener" style="color:inherit">Rà soát 9 biểu</a>.</span>
+  </div>
+</footer>
+<div class="toast" id="toast" hidden role="status"></div>
+
+
+<div class="v360-foot"><div class="v360-foot-in">
+  <span><b>Vị trí việc làm 360</b> · bản web 1.3.0 (02/11/2026) · Tạo tệp đơn vị 1.7.0 (quy tắc gợi ý PL3 1.3)</span>
+  <span class="v360-safe">Tệp của đơn vị chỉ xử lý trên máy của bạn, không gửi lên máy chủ.</span>
+  <span id="v360NhatKy" hidden>Trang có ghi nhật ký sử dụng (mã, tên đơn vị, thao tác, số đếm) để tác giả theo dõi; không gửi tệp, không ghi họ tên.</span>
+  <span id="v360TacGia" hidden></span>
+  <span id="v360LienHe" hidden></span>
+</div></div>
+<script src="lib/jszip-3.10.1.min.js?v=1.3.0.acc7e41455"></script>
+<script src="js/split-core.js?v=1.3.0.a37fa75e81"></script>
+<script src="js/nap-core.js?v=1.3.0.9a5ffb3228"></script>
+<script src="js/du-lieu-pl3.js?v=1.3.0.9c89009865"></script>
+<script src="js/du-lieu-tg.js?v=1.3.0.74d6601ec3"></script>
+<script src="js/du-lieu-sldv.js?v=1.3.0.484b42b653"></script>
+<script src="js/goiy-core.js?v=1.3.0.25462e916f"></script>
+<script src="js/du-lieu-ngach.js?v=1.3.0.df95c8af06"></script>
+<script src="js/ngach-core.js?v=1.3.0.fe68d7e5cc"></script>
+<script src="js/du-lieu-xa.js?v=1.3.0.1a9d55add4"></script>
+<script src="js/du-lieu-dvsn.js?v=1.3.0.f7b0c8f1b8"></script>
+<script src="js/mau.js?v=1.3.0.1c6355c192"></script>
+<script src="js/tao-tep.js?v=1.3.0.fe74d34e7a"></script>
+<script src="js/cau-hinh.js?v=1.3.0.47973bc4f9"></script>
+<script src="js/khung.js?v=1.3.0.b723b2bb43"></script>
+</body>
+</html>

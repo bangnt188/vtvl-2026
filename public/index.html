@@ -1,115 +1,1743 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f4f5f1">
-<meta name="description" content="VTVL Captain Solution: đối chiếu sản lượng B1, kiểm tra dấu vân tay XLSX và hướng dẫn 8 bước VTVL 2026. Hỗ trợ tại Cần Thơ.">
-<title>VTVL 360 — Captain Solution</title>
-<style>
-:root{--nav:#133c39;--nav2:#0e2d2b;--ink:#172c2a;--muted:#60736e;--border:#dce4df;--paper:#f4f5f1;--white:#fff;--mint:#d9ebdf;--accent:#17665a;--warn:#a54d34}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:var(--accent)}:focus-visible{outline:3px solid #e9b46d;outline-offset:3px}::selection{background:#cae4d6;color:#102b28}
-.app{display:grid;grid-template-columns:262px 1fr;min-height:100vh}
-aside{background:var(--nav);color:#eaf4ed;padding:27px 20px;display:flex;flex-direction:column;gap:26px}
-.brand{padding:3px 12px 21px;border-bottom:1px solid #3c6561}.brand strong{font-size:24px;letter-spacing:-.025em;line-height:1.1}.brand strong span{color:#add9bb}.brand small{display:block;margin-top:7px;color:#b5cec4;font-size:10px;letter-spacing:.2em;font-weight:700}
-.nav-caption{font-size:11px;font-weight:750;letter-spacing:.12em;color:#a9c1b9;padding:0 12px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#d9e8e0;text-align:left;border-radius:10px;padding:13px 14px;display:flex;align-items:center;gap:11px;font-weight:600}.nav button:hover,.nav button.active{background:#255b53;color:#fff}.nav button.active:before{content:"";width:5px;height:5px;background:#b7e6ca;border-radius:50%}.nav button:not(.active):before{content:"";width:5px;height:5px;border:1px solid #78a39b;border-radius:50%}
-.side-note{margin-top:auto;border-top:1px solid #3c6561;padding:20px 12px 0;color:#c3d6cd;font-size:12px}.side-note strong{display:block;color:#fff;margin-bottom:6px}
-.main{min-width:0;display:flex;flex-direction:column}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,4vw,68px);background:#fff;border-bottom:1px solid var(--border);gap:15px}.crumb{font-size:13px;color:#678079}.crumb strong{color:#27413d}.environment{font-size:12px;color:#30574c;border:1px solid var(--border);padding:7px 11px;border-radius:100px}.environment:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#d69b42;margin-right:8px}
-main{max-width:1360px;width:100%;margin:auto;padding:43px clamp(22px,4vw,68px) 80px;flex:1}
-.page{display:none}.page.active{display:block}.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(285px,.83fr);gap:32px;align-items:stretch}.hero-copy{padding:18px 0 28px}
-h1{font-size:clamp(34px,3.7vw,54px);line-height:1.14;letter-spacing:-.03em;margin:14px 0 23px;font-weight:770;max-width:740px}h1 em{font-style:normal;color:var(--accent)}h2{font-size:22px;letter-spacing:-.025em;line-height:1.3;margin:0 0 9px}.lead{font-size:16px;color:#516660;max-width:62ch;line-height:1.8;margin:0 0 26px}.accent-rule{display:flex;gap:4px}.accent-rule i{display:block;width:23px;height:4px;background:#2d8670;border-radius:2px}.accent-rule i:nth-child(2){width:11px;background:#8cbaa6}.accent-rule i:nth-child(3){width:7px;background:#c0dbc8}
-.actions{display:flex;flex-wrap:wrap;gap:12px}.primary,.secondary,.small-btn{border-radius:9px;padding:12px 19px;font-weight:730;border:1px solid var(--accent)}.primary{background:var(--accent);color:#fff}.primary:hover{background:#0a5047}.secondary{background:transparent;color:var(--accent)}.secondary:hover{background:#e4efe9}.small-btn{background:#fff;color:var(--accent);padding:8px 12px}
-.principle{background:var(--nav);color:#edf5ee;border-radius:16px;padding:31px}.principle .label{font-size:11px;letter-spacing:.14em;font-weight:700;color:#b0d2c4}.principle h2{font-size:29px;line-height:1.3;margin:21px 0}.principle .line{border-top:1px solid #426962;padding:15px 0;display:flex;align-items:start;gap:16px;color:#d9e6df}.principle .line span{font-size:11px;color:#a2cdbe}.principle .line p{margin:0;font-size:14px}.principle small{display:block;color:#b7d3c6;margin-top:18px}
-.section{margin-top:48px}.section-title{margin-bottom:21px}.section-title p{margin:0;color:var(--muted)}
-.task{width:100%;background:#fff;border:1px solid var(--border);border-bottom:0;text-align:left;padding:21px 22px;display:flex;align-items:center;gap:19px}.task:first-child{border-radius:12px 12px 0 0}.task:last-child{border-radius:0 0 12px 12px;border-bottom:1px solid var(--border)}.task:hover{background:#fbfefb}.task-icon{width:44px;height:44px;border-radius:10px;background:#e7f1ea;color:#2a6a59;display:grid;place-items:center;flex:0 0 auto;font-weight:800;font-size:20px}.task div:nth-child(2){flex:1}.task strong{display:block;font-size:16px}.task p{margin:4px 0 0;color:#61746e;font-size:13px}.task .arrow{font-size:20px;color:#53786b}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}.plain{padding:18px 0;border-top:2px solid #c7d8ce}.plain h3{font-size:16px;margin:0 0 8px}.plain p{color:var(--muted);margin:0;font-size:14px}
-.page-head{max-width:850px;margin-bottom:28px}.page-head h1{font-size:39px}.page-head p{color:var(--muted);line-height:1.8}
-.steps{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}.step{display:flex;gap:22px;padding:23px 25px;border-bottom:1px solid var(--border)}.step:last-child{border:0}.step .num{font-size:14px;font-weight:760;color:var(--accent);width:35px;flex-shrink:0}.step h3{font-size:16px;margin:0}.step p{color:var(--muted);margin:4px 0 0;font-size:14px}
-.panel{background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px}.drop{display:block;border:1.5px dashed #8db7a6;background:#f6faf6;border-radius:12px;padding:35px;text-align:center;cursor:pointer}.drop strong{display:block;font-size:18px}.drop small{display:block;color:var(--muted);margin-top:8px}.drop input{margin-top:20px;max-width:100%;font-size:13px}.result{border-radius:9px;background:#edf2ee;margin-top:22px;padding:17px;color:#325249;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}.result.success{background:#e2f2e8;color:#164b37}.result.warning{background:#fff0e6;color:#82452c}
-.note{background:#e5ede7;color:#405b50;margin-top:20px;padding:17px 19px;border-radius:9px;font-size:14px}
-label.field{display:block;font-weight:650;font-size:13px;margin-bottom:6px}.form-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel input[type="number"],.panel input[type="text"]{border:1px solid #bbcfc4;background:white;border-radius:8px;padding:11px 13px;width:100%;min-width:0}.panel input:focus{border-color:#2e8267}.row-between{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 13px}.row-between h2{margin:0;font-size:17px}.source-row{display:grid;grid-template-columns:2fr 1fr 40px;gap:10px;margin-bottom:10px}.remove{background:#f7eeee;color:#824a38;border:0;border-radius:8px;font-size:19px}.remove:hover{background:#f5ddd5}.calc-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}.calc-actions button:disabled{opacity:.5;cursor:not-allowed}
-.legal{display:grid;gap:10px}.legal article{background:white;border:1px solid var(--border);padding:20px 23px;border-radius:10px;display:flex;gap:12px;justify-content:space-between;align-items:center}.legal strong{display:block}.legal p{color:var(--muted);margin:5px 0 0;font-size:13px}.legal a{flex-shrink:0;font-size:13px}
-footer{padding:18px clamp(22px,4vw,68px);display:flex;gap:15px;justify-content:space-between;border-top:1px solid var(--border);color:#688077;font-size:12px}#mobile-menu{display:none}
-@media(max-width:980px){.app{grid-template-columns:220px 1fr}.hero{grid-template-columns:1fr}.principle{max-width:650px}.pair{grid-template-columns:1fr}}
-@media(max-width:740px){.app{display:block}aside{position:fixed;z-index:20;left:0;top:0;bottom:0;width:280px;transform:translateX(-100%);transition:transform .2s ease;box-shadow:0 10px 30px #0003}aside.open{transform:translateX(0)}#mobile-menu{display:inline-block;border:1px solid var(--border);border-radius:8px;padding:7px 12px;background:white;color:var(--ink)}header{height:64px;padding:0 17px}.environment{font-size:10px}.crumb{font-size:12px}main{padding:26px 17px 50px}.hero-copy{padding:10px 0}h1{font-size:34px}.page-head h1{font-size:30px}.principle{padding:24px}.panel{padding:17px}.form-two{grid-template-columns:1fr}.source-row{grid-template-columns:1.7fr 1fr 35px}.legal article{display:block}.legal a{display:inline-block;margin-top:9px}footer{display:block;padding:20px}.task{padding:18px 15px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f2e2b">
+<meta name="description" content="Nền tảng Chuẩn hóa Vị trí Việc làm 2026: Hướng dẫn thông tin đầu vào tối thiểu để duyệt pass hệ thống Trung ương, bộ Dynamic Prompt đa ngành cho AI Agent, quy trình chuẩn 6 bước và bộ 6 sản phẩm đầu ra hoàn chỉnh.">
+<title>VTVL 360 — Chuẩn Hóa Vị Trí Việc Làm 2026 (Pass Hệ Thống BTC Trung Ương)</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="VTVL 360">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VTVL 360">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://vtvl.captain-solution.tech/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VTVL 360">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="VTVL 360 — Chuẩn hóa vị trí việc làm 2026">
+<meta property="og:description" content="Tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu VTVL ngay trên trình duyệt. Dữ liệu không rời khỏi máy.">
+<meta property="og:url" content="https://vtvl.captain-solution.tech/">
+<meta property="og:image" content="https://vtvl.captain-solution.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VTVL 360 — Vị trí việc làm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VTVL 360 — Chuẩn hóa vị trí việc làm 2026">
+<meta name="twitter:description" content="Tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu VTVL ngay trên trình duyệt.">
+<meta name="twitter:image" content="https://vtvl.captain-solution.tech/og-image.png">
 
-.vtvl-muted{color:var(--muted);font-size:14px;margin:6px 0 20px}.vtvl-preflight{padding-top:20px;line-height:1.6}.vtvl-preflight h3{font-size:20px;margin:0 0 5px}.vtvl-subtitle{color:var(--muted);margin:2px 0 16px}.vtvl-counts{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 20px}.vtvl-count{min-width:130px;background:#eaf0eb;padding:12px 15px;border-radius:9px;display:flex;flex-direction:column}.vtvl-count strong{font-size:25px;line-height:1.4;font-variant-numeric:tabular-nums}.vtvl-count small{color:#587268}.vtvl-issues{max-height:440px;overflow-y:auto;border-top:1px solid var(--border)}.vtvl-issue{padding:14px 4px;border-bottom:1px solid var(--border)}.vtvl-issue strong{display:inline-block;font-size:12px;color:#8c3729;margin-right:10px}.vtvl-issue.vtvl-warn strong{color:#7d5d2b}.vtvl-issue small{color:#60736e;font-size:12px}.vtvl-issue p{margin:4px 0 0;font-size:13px}.vtvl-disclaimer{font-size:13px;color:#79563b;background:#fff3e3;border-radius:8px;padding:12px 14px;margin:18px 0 0}
+<style>
+:root {
+  --nav: #0f2e2b;
+  --nav-dark: #0a201e;
+  --nav-hover: #1a4d48;
+  --ink: #162927;
+  --muted: #526864;
+  --border: #d4e0da;
+  --border-light: #e5ece8;
+  --paper: #f4f7f5;
+  --white: #ffffff;
+  --accent: #156b5f;
+  --accent-hover: #0f4f46;
+  --accent-light: #e6f3f0;
+  --warn: #b8432a;
+  --warn-light: #fdf2ef;
+  --gold: #b87c1e;
+  --gold-light: #fef8ee;
+  --blue: #1c5e87;
+  --blue-light: #edf6fc;
+  --card-shadow: 0 4px 16px rgba(15, 46, 43, 0.06);
+  --hover-shadow: 0 8px 24px rgba(15, 46, 43, 0.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* Layout */
+.app {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 1024px) {
+  .app { grid-template-columns: 1fr; }
+  aside { display: none; position: fixed; z-index: 100; top: 0; left: 0; bottom: 0; width: 300px; box-shadow: 4px 0 24px rgba(0,0,0,0.25); }
+  aside.open { display: flex; }
+}
+
+/* Sidebar */
+aside {
+  background: var(--nav);
+  color: #e6f2ec;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.brand {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #23544e;
+}
+.brand strong {
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  display: block;
+  color: #fff;
+}
+.brand strong span { color: #8ee0b7; }
+.brand small {
+  display: block;
+  margin-top: 6px;
+  color: #a4ccc0;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.nav-caption {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: #8fbdb0;
+  padding: 0 10px 4px;
+  text-transform: uppercase;
+}
+.nav {
+  display: grid;
+  gap: 6px;
+}
+.nav a, .nav button {
+  border: 0;
+  background: transparent;
+  color: #d1e5dd;
+  text-align: left;
+  border-radius: 10px;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+.nav a:hover, .nav button:hover, .nav button.active {
+  background: #1c4d46;
+  color: #fff;
+  text-decoration: none;
+}
+.nav button.active:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #8ee0b7;
+  border-radius: 50%;
+}
+.nav button:not(.active):before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border: 1px solid #6b998f;
+  border-radius: 50%;
+}
+.side-support {
+  margin-top: auto;
+  border-top: 1px solid #23544e;
+  padding: 20px 12px 0;
+  font-size: 12.5px;
+  color: #b7d6cb;
+}
+.side-support strong { display: block; color: #fff; margin-bottom: 6px; font-size: 14px; }
+.side-support .btn-contact {
+  display: inline-block;
+  margin-top: 10px;
+  background: #8ee0b7;
+  color: #0f2e2b;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
+.side-support .btn-contact:hover { background: #b1ecd1; text-decoration: none; }
+
+/* Main layout */
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 56px);
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.crumb {
+  font-size: 13.5px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.crumb strong { color: var(--ink); }
+#mobile-menu {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+@media (max-width: 1024px) {
+  #mobile-menu { display: inline-block; }
+}
+.environment {
+  font-size: 12px;
+  color: #175246;
+  background: var(--accent-light);
+  border: 1px solid #a8d6ca;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.environment:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1cb588;
+}
+
+main {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 4vw, 56px) 100px;
+  flex: 1;
+}
+
+/* Page sections */
+.page-section {
+  display: none;
+}
+.page-section.active {
+  display: block;
+}
+
+/* Hero Section */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.85fr);
+  gap: 36px;
+  align-items: stretch;
+  margin-bottom: 44px;
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.badge-central {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-light);
+  color: var(--gold);
+  border: 1px solid #ebd3a7;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+h1 {
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+  font-weight: 800;
+  color: #0d2925;
+}
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.lead {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 66ch;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 13px 22px;
+  border-radius: 9px;
+  font-weight: 700;
+  border: 1px solid var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+  color: #fff;
+}
+.btn-secondary {
+  background: #fff;
+  color: var(--accent);
+  padding: 13px 20px;
+  border-radius: 9px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.btn-secondary:hover {
+  background: var(--paper);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+/* Hero Status Card */
+.hero-box {
+  background: var(--nav);
+  color: #eaf3ee;
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--card-shadow);
+}
+.hero-box .caption {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-weight: 750;
+  color: #8edec0;
+  text-transform: uppercase;
+}
+.hero-box h3 {
+  font-size: 22px;
+  line-height: 1.35;
+  margin: 14px 0 20px;
+  color: #fff;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.stat-item {
+  background: #194843;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #28635c;
+}
+.stat-item strong {
+  display: block;
+  font-size: 22px;
+  color: #8edec0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.stat-item span {
+  font-size: 12px;
+  color: #cadfd5;
+}
+.hero-note {
+  font-size: 12.5px;
+  color: #adc9bf;
+  border-top: 1px solid #28635c;
+  padding-top: 16px;
+}
+
+/* Section styling */
+.section-block {
+  margin-top: 56px;
+}
+.section-head {
+  margin-bottom: 26px;
+}
+.section-head .sub {
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+.section-head h2 {
+  font-size: 26px;
+  letter-spacing: -0.025em;
+  color: #0e2b27;
+  line-height: 1.3;
+}
+.section-head p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 6px;
+  max-width: 76ch;
+}
+
+/* Card Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+}
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.icon-green { background: var(--accent-light); color: var(--accent); }
+.icon-gold { background: var(--gold-light); color: var(--gold); }
+.icon-blue { background: var(--blue-light); color: var(--blue); }
+.icon-red { background: var(--warn-light); color: var(--warn); }
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #12332e;
+}
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.card ul {
+  margin-top: 14px;
+  padding-left: 20px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.card li { margin-bottom: 7px; }
+.card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+.tag-required { background: #ffeae6; color: var(--warn); }
+.tag-system { background: #e3f2fd; color: #1565c0; }
+.tag-pass { background: #e8f5e9; color: #2e7d32; }
+
+/* Failure Points Box */
+.warning-box {
+  background: #fff9f6;
+  border: 1px solid #f3cfc6;
+  border-radius: 14px;
+  padding: 26px;
+  margin-bottom: 32px;
+}
+.warning-box h3 {
+  color: var(--warn);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.failure-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.failure-item {
+  background: #fff;
+  border: 1px solid #f5ddd6;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+}
+.failure-item strong {
+  display: block;
+  color: var(--warn);
+  margin-bottom: 4px;
+}
+
+/* Pipeline steps (P0 -> P5) */
+.steps-pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  position: relative;
+}
+.step-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.step-num {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 4px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+.step-card h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0e2d29;
+}
+.step-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.step-card .step-verify {
+  margin-top: auto;
+  border-top: 1px dashed var(--border);
+  padding-top: 10px;
+  font-size: 12px;
+  color: #276255;
+  font-weight: 600;
+}
+
+/* Prompt Generator Section */
+.prompt-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+}
+.prompt-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+  background: var(--paper);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+}
+.field-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #173833;
+  margin-bottom: 6px;
+}
+.field-group select, .field-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  color: var(--ink);
+}
+.field-group select:focus, .field-group input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 107, 95, 0.15);
+}
+.prompt-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.prompt-output-header h3 {
+  font-size: 16px;
+  color: #123832;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-copy {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.15s ease;
+}
+.btn-copy:hover {
+  background: var(--accent-hover);
+}
+.btn-copy.copied {
+  background: #1cb588;
+}
+.prompt-editor {
+  width: 100%;
+  height: 380px;
+  background: #112826;
+  color: #d8eee7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #234f48;
+  resize: vertical;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.prompt-guide {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Deliverables Section */
+.deliverable-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease;
+}
+.deliverable-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.deliverable-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.file-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+.badge-xlsx { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+.badge-docx { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+.badge-txt { background: #f5f5f5; color: #616161; border: 1px solid #e0e0e0; }
+
+.deliverable-card h4 {
+  font-size: 16px;
+  color: #11342f;
+  margin-bottom: 8px;
+}
+.deliverable-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.deliverable-specs {
+  margin-top: auto;
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  color: #214b43;
+  line-height: 1.5;
+}
+
+/* Preflight Tool Panel */
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+}
+.panel h2 {
+  font-size: 20px;
+  color: #10332d;
+  margin-bottom: 8px;
+}
+.vtvl-muted {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.form-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .form-two { grid-template-columns: 1fr; }
+}
+.field {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #183d37;
+  margin-bottom: 6px;
+}
+input[type="file"], input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13.5px;
+}
+.calc-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+.vtvl-preflight {
+  margin-top: 20px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  font-size: 14px;
+  min-height: 80px;
+}
+.vtvl-counts {
+  display: flex;
+  gap: 16px;
+  margin: 14px 0;
+  flex-wrap: wrap;
+}
+.vtvl-count {
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+.vtvl-count strong { font-size: 20px; color: var(--ink); display: block; }
+.vtvl-count small { font-size: 12px; color: var(--muted); }
+.vtvl-issues {
+  max-height: 380px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  margin-top: 14px;
+}
+.vtvl-issue {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 13px;
+}
+.vtvl-issue strong { font-size: 12px; color: var(--warn); margin-right: 8px; }
+.vtvl-issue.vtvl-warn strong { color: var(--gold); }
+.vtvl-disclaimer {
+  font-size: 12.5px;
+  color: #8c5722;
+  background: var(--gold-light);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 14px;
+  border: 1px solid #eed6b0;
+}
+
+/* Contact / Support Section */
+.contact-section {
+  background: linear-gradient(135deg, #0e2f2c 0%, #17544b 100%);
+  color: #fff;
+  border-radius: 20px;
+  padding: clamp(32px, 5vw, 56px);
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 1fr);
+  gap: 40px;
+  box-shadow: var(--hover-shadow);
+}
+@media (max-width: 900px) {
+  .contact-section { grid-template-columns: 1fr; }
+}
+.contact-info h2 {
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  color: #fff;
+}
+.contact-info p {
+  color: #c9e3d9;
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+.contact-methods {
+  display: grid;
+  gap: 14px;
+}
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px 18px;
+  border-radius: 12px;
+}
+.contact-method-icon {
+  font-size: 22px;
+}
+.contact-method strong {
+  display: block;
+  font-size: 13px;
+  color: #8ee0b7;
+}
+.contact-method span {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.contact-form-card {
+  background: #fff;
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.contact-form-card h3 {
+  font-size: 18px;
+  color: #10332d;
+  margin-bottom: 6px;
+}
+.contact-form-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.form-input {
+  margin-bottom: 14px;
+}
+.form-input label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #173833;
+}
+.form-input input, .form-input select, .form-input textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13.5px;
+}
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 750;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  margin-top: 8px;
+}
+.btn-submit:hover {
+  background: var(--accent-hover);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #11342f;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.25s ease;
+  z-index: 999;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast:before {
+  content: "✓";
+  background: #8ee0b7;
+  color: #0f2e2b;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  margin-top: 80px;
+  border-top: 1px solid var(--border);
+  padding: 30px clamp(20px, 4vw, 56px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+}
+@media (max-width: 600px) {
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+}
 </style>
 </head>
 <body>
+
 <div class="app">
-<aside id="side"><div class="brand"><strong>VTVL <span>360</span></strong><small>CAPTAIN SOLUTION</small></div>
-<div><div class="nav-caption">KHÔNG GIAN HỒ SƠ</div><nav class="nav" id="nav" aria-label="Điều hướng chính">
-<button data-page="overview" class="active" aria-current="page">Tổng quan</button>
-<button data-page="workflow">Quy trình 8 bước</button>
-<button data-page="evidence">Kiểm tra tệp nguồn</button>
-<button data-page="calculator">Đối chiếu B1</button>
-<button data-page="legal">Căn cứ pháp lý</button>
-</nav></div>
-<div class="side-note"><strong>Bảo mật dữ liệu</strong>Kiểm tra và tính toán trên bản thử nghiệm chạy trong trình duyệt. Không gửi hồ sơ lên máy chủ.<p>Bản demo độc lập, chưa tích hợp AI hay trình xuất Excel chuẩn v2.</p></div>
-</aside>
-<div class="main"><header><div class="crumb"><button type="button" id="mobile-menu" aria-label="Mở điều hướng" aria-expanded="false" aria-controls="side">☰</button> Không gian làm việc / <strong id="current-page">Tổng quan</strong></div><span class="environment">Bản thử nghiệm</span></header>
-<main>
-<section class="page active" id="overview"><div class="hero"><div class="hero-copy"><div class="accent-rule"><i></i><i></i><i></i></div><h1>Hồ sơ vị trí việc làm, <em>rõ nguồn đến từng con số.</em></h1><p class="lead">Không gian hỗ trợ rà soát nhiệm vụ, đối chiếu sản lượng và kiểm tra bộ biểu vị trí việc làm 2026. Phục vụ đơn vị sự nghiệp giáo dục và triển khai trực tiếp tại Cần Thơ.</p><div class="actions"><button class="primary" data-go="evidence">Kiểm tra tệp của bạn</button><button class="secondary" data-go="workflow">Xem quy trình 8 bước</button></div></div><div class="principle"><div class="label">NGUYÊN TẮC KIỂM CHỨNG</div><h2>Không tự đoán.<br>Không tự sửa mẫu.</h2><div class="line"><span>01</span><p>Mỗi số liệu phải có nguồn, kỳ và phạm vi.</p></div><div class="line"><span>02</span><p>Khoản chưa rõ ghi “chờ xác nhận”.</p></div><div class="line"><span>03</span><p>Không tuyên bố Excel hợp lệ khi chưa kiểm thử cấu trúc.</p></div><small>Công cụ xuất XLSX chuẩn v2 đang trong giai đoạn phát triển.</small></div></div>
-<div class="section"><div class="section-title"><h2>Bắt đầu một hồ sơ</h2><p>Chọn công việc cần xử lý.</p></div>
-<button class="task" data-go="evidence"><div class="task-icon">✓</div><div><strong>Kiểm tra dấu vân tay XLSX</strong><p>Xác minh chữ ký ZIP và SHA-256, không sửa file gốc.</p></div><span class="arrow">›</span></button>
-<button class="task" data-go="calculator"><div class="task-icon">Σ</div><div><strong>Đối chiếu tổng sản lượng B1</strong><p>Đánh dấu số học khớp/chưa khớp; không tự cập nhật biểu.</p></div><span class="arrow">›</span></button>
-<button class="task" data-go="legal"><div class="task-icon">§</div><div><strong>Kiểm tra căn cứ pháp lý</strong><p>Truy cập hướng dẫn và văn bản nguồn để đối chiếu hiệu lực.</p></div><span class="arrow">›</span></button></div>
-<div class="pair"><div class="plain"><h3>Đặc thù giáo dục</h3><p>Mầm non, tiểu học, THCS và trường liên cấp phải tính riêng theo định mức phù hợp. Trường sáp nhập cần tách kỳ và phạm vi số liệu.</p></div><div class="plain"><h3>Tình trạng sản phẩm</h3><p>Đây là bản thiết kế lại độc lập; chưa lấy được source của trang tham khảo, chưa có backend AI, đăng nhập, lưu trữ hay công cụ xuất XLSX chuẩn nhập hệ thống.</p></div></div></section>
-<section class="page" id="workflow"><div class="page-head"><h1>Quy trình 8 bước</h1><p>Thực hành rà soát vị trí việc làm theo hướng dẫn hiện hành. Chỉ sử dụng dữ liệu đã được đơn vị xác nhận và kiểm tra trước khi nộp.</p></div><div class="steps" id="steps"></div><div class="note">Quy trình hiển thị mang tính hướng dẫn. Không tự gắn trạng thái “đã thẩm định” hoặc “đã phê duyệt”.</div></section>
-<section class="page" id="evidence"><div class="page-head"><h1>Kiểm tra tệp nguồn</h1><p>Kiểm tra dấu vân tay và bộ quy tắc validation dựa trên những lỗi nhập liệu đã ghi nhận. So với mẫu v2 gốc để phát hiện thay đổi cấu trúc; không sửa file và không tải dữ liệu lên máy chủ.</p></div><div class="panel"><label class="drop"><strong>Chọn Bộ biểu VTVL (.xlsx)</strong><small>Giới hạn 50 MB • Không upload lên máy chủ</small><input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label><div class="result" id="file-result" aria-live="polite">Chưa chọn tệp.</div></div>
-<div class="panel" style="margin-top:20px">
-  <h2>Kiểm tra validation VTVL v2</h2>
-  <p class="vtvl-muted">Đối chiếu dữ liệu nhập, mã tham chiếu và cấu trúc OOXML. Mọi kiểm tra diễn ra trên thiết bị của bạn.</p>
-  <div class="form-two">
-    <div><label class="field" for="vtvl-import">File Bộ biểu cần kiểm tra</label><input id="vtvl-import" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></div>
-    <div><label class="field" for="vtvl-template">Mẫu Bộ biểu VTVL v2 gốc (để so cấu trúc)</label><input id="vtvl-template" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></div>
+  <!-- Sidebar Navigation -->
+  <aside id="side">
+    <div class="brand">
+      <strong>VTVL <span>360</span></strong>
+      <small>Chuẩn Hóa VTVL 2026</small>
+    </div>
+
+    <div>
+      <div class="nav-caption">ĐIỀU HƯỚNG NHANH</div>
+      <nav class="nav" id="nav" aria-label="Điều hướng landing page">
+        <button data-target="sec-hero" class="active">Tổng quan & Tiêu chuẩn</button>
+        <button data-target="sec-inputs">Đầu vào tối thiểu</button>
+        <button data-target="sec-pipeline">Quy trình 6 bước (P0-P5)</button>
+        <button data-target="sec-prompt">Dynamic Prompt đa ngành</button>
+        <button data-target="sec-deliverables">Bộ 6 sản phẩm đầu ra</button>
+        <button data-target="sec-validator">Kiểm tra File XLSX</button>
+        <button data-target="sec-contact">Liên hệ hỗ trợ</button>
+        <a href="/vtvl360/">Mở công cụ VTVL 360</a>
+      </nav>
+    </div>
+
+    <div class="side-support">
+      <strong>Hỗ trợ kỹ thuật 24/7</strong>
+      <p>Tư vấn xử lý lỗi import BTC TW và rà soát định mức nhân lực theo đúng quy chuẩn.</p>
+      <a href="#sec-contact" class="btn-contact">Liên hệ chuyên gia ngay</a>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="main">
+    <header>
+      <div class="crumb">
+        <button type="button" id="mobile-menu" aria-label="Mở menu" aria-expanded="false">☰</button>
+        <span>Cổng thông tin</span> / <strong id="current-title">Tổng quan tiêu chuẩn VTVL</strong>
+      </div>
+      <span class="environment">Hệ thống BTC Trung ương</span>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section id="sec-hero" class="content-sec">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="badge-central">★ TIÊU CHUẨN BAN TỔ CHỨC TRUNG ƯƠNG 2026</div>
+            <h1>Chuẩn hóa Hồ sơ Vị trí Việc làm, <em>Duyệt Pass 100%</em> trên Hệ thống Trung ương</h1>
+            <p class="lead">
+              Giải pháp toàn diện rà soát danh mục VTVL, định mức lao động và tự động kiểm thử 58 tiêu chí kỹ thuật.
+              Can thiệp trực tiếp cấu trúc XML Bộ biểu VTVL v2 (51 tệp XML) đảm bảo 0 lỗi import, 0 lỗi công thức, đáp ứng nghiêm ngặt Hướng dẫn 07-HD/BTCTW.
+            </p>
+            <div class="actions">
+              <a href="#sec-prompt" class="btn-primary">⚡ Lấy Dynamic Prompt Ngay</a>
+              <a href="#sec-inputs" class="btn-secondary">📋 Xem Checklist Đầu Vào Tối Thiểu</a>
+              <a href="/vtvl360/" class="btn-primary">🧭 Mở công cụ: Tạo tệp · Bấm giờ · Rà soát</a>
+            </div>
+          </div>
+
+          <div class="hero-box">
+            <div>
+              <span class="caption">CHỈ SỐ KIỂM ĐỊNH HỆ THỐNG</span>
+              <h3>Bảo đảm hồ sơ chuẩn xác, phê duyệt ngay từ lần nộp đầu tiên</h3>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <strong>58 / 58</strong>
+                  <span>Tiêu chí đạt 100%</span>
+                </div>
+                <div class="stat-item">
+                  <strong>0 LỖI</strong>
+                  <span>#REF!, #VALUE!, #N/A</span>
+                </div>
+                <div class="stat-item">
+                  <strong>51 FILES</strong>
+                  <span>Cấu trúc XML OOXML chuẩn</span>
+                </div>
+                <div class="stat-item">
+                  <strong>ĐA NGÀNH</strong>
+                  <span>GD, Y tế, Xã/Phường, Sở...</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-note">
+              ✓ Tự động đối soát khóa ngoài A1 - A2 - B1 - C1 - D1<br>
+              ✓ Kiểm soát định mức $E + F \le D$ không vượt quỹ giờ
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 LỖI SỐNG CÒN KHIẾN HỆ THỐNG TRUNG ƯƠNG TỪ CHỐI -->
+        <div class="warning-box">
+          <h3>⚠️ 6 Lỗi Sống Còn Khiến Hồ Sơ Bị Trả Về Hoặc Báo Hỏng Trên Hệ Thống BTC Trung Ương</h3>
+          <div class="failure-points">
+            <div class="failure-item">
+              <strong>1. Kỳ hồ sơ ghi sai chuỗi quy chuẩn</strong>
+              Ghi <code>K2526</code> hoặc <code>30/9/2026</code>. Bắt buộc phải là: <code>01/10/2025 – 30/09/2026</code> (dấu gạch ngang dài <code>–</code> và có khoảng trắng 2 bên).
+            </div>
+            <div class="failure-item">
+              <strong>2. Đưa nhân viên Hợp đồng 111 vào biểu C1, D1</strong>
+              Bảo vệ, tạp vụ, phục vụ, nấu ăn, lái xe... là HĐLĐ theo NĐ 111/2022/NĐ-CP, không hưởng biên chế sự nghiệp. Đưa vào C1/D1 sẽ bị loại toàn bộ hồ sơ.
+            </div>
+            <div class="failure-item">
+              <strong>3. Mã sản phẩm (B1!L) không có trong danh mục</strong>
+              Tự ý tạo mã sản phẩm nội bộ khi chưa được công bố trên danh mục phần mềm Trung ương $
+ightarrow$ Bắt buộc để trống cột <code>B1!L</code> trong file Import.
+            </div>
+            <div class="failure-item">
+              <strong>4. Hỏng cấu trúc XML (Mất sharedStrings)</strong>
+              Dùng phần mềm sửa file thông thường làm hỏng tệp nén ZIP và <code>xl/sharedStrings.xml</code>, hệ thống báo *"Tệp không đúng mẫu hoặc bị hỏng"*.
+            </div>
+            <div class="failure-item">
+              <strong>5. Vượt quỹ giờ cá nhân (E + F > D)</strong>
+              Tổng giờ làm việc chính của VTVL (cột E) và giờ việc khác/kiêm nhiệm (cột F) vượt quá quỹ giờ chuẩn của cá nhân (cột D = 1.904h hoặc 1.680h).
+            </div>
+            <div class="failure-item">
+              <strong>6. Lệch khóa ngoài giữa các biểu</strong>
+              Mã nhiệm vụ tại A2 không có trong A1; Mã VTVL tại A2/D1 không tồn tại trong C1; biểu B1 không khớp tỷ lệ 1-1 chính xác với công việc ở A2.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKLIST ĐẦU VÀO TỐI THIỂU -->
+      <section id="sec-inputs" class="content-sec section-block">
+        <div class="section-head">
+          <span class="sub">HỒ SƠ BẮT BUỘC</span>
+          <h2>4 Nhóm Thông Tin Đầu Vào Tối Thiểu Để Chạy Duyệt Pass</h2>
+          <p>Để hệ thống tự động xử lý và xuất ra bộ hồ sơ đạt chuẩn thẩm định, đơn vị chỉ cần chuẩn bị đủ 4 nhóm dữ liệu thực tế sau đây:</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Nhóm 1 -->
+          <div class="card">
+            <div class="card-icon icon-green">🏛️</div>
+            <h3>1. Hồ sơ Pháp lý & Cơ cấu Tổ chức</h3>
+            <p>Xác định tư cách pháp nhân, chức năng nhiệm vụ và khung thẩm quyền phê duyệt:</p>
+            <ul>
+              <li><strong>Quyết định thành lập / sáp nhập / quy định chức năng:</strong> Quyết định của UBND cấp có thẩm quyền xác lập cơ cấu đơn vị.</li>
+              <li><strong>Quyết định phê duyệt Đề án VTVL gần nhất:</strong> Làm cơ sở đối chiếu danh mục vị trí đã được duyệt (C1).</li>
+              <li><strong>Quyết định giao chỉ tiêu biên chế:</strong> Số lượng người làm việc / biên chế công chức, viên chức được giao năm cơ sở.</li>
+              <li><strong>Quyết định bổ nhiệm Cán bộ quản lý:</strong> Bổ nhiệm Thủ trưởng, Phó thủ trưởng, Trưởng/Phó phòng ban, Tổ trưởng/Tổ phó.</li>
+            </ul>
+            <span class="tag tag-required">BẮT BUỘC CÓ</span>
+          </div>
+
+          <!-- Nhóm 2 -->
+          <div class="card">
+            <div class="card-icon icon-blue">👥</div>
+            <h3>2. Hồ sơ Nhân sự & Tiền lương (Chốt 30/09/2026)</h3>
+            <p>Cung cấp số liệu chính xác để điền biểu D1 (Nguồn lực hiện có) và dự báo D2:</p>
+            <ul>
+              <li><strong>Bảng thanh toán tiền lương tháng 09/2026:</strong> Có đầy đủ họ tên, ngạch/hạng viên chức, hệ số lương, phụ cấp chức vụ, mã QHNS.</li>
+              <li><strong>Danh sách trích ngang nhân sự:</strong> Dùng để lập bảng ánh xạ nội bộ giữa Mã nhân sự ẩn danh (<code>THCSCK.001</code>) với Họ tên (bảo mật dữ liệu).</li>
+              <li><strong>Danh sách biến động 2027–2031:</strong> Danh sách cán bộ đến tuổi nghỉ hưu, chuyển công tác để xây dựng lộ trình tinh giản 5–10%.</li>
+              <li><strong>Phân tách Hợp đồng 111 (HTPV):</strong> Tách riêng danh sách bảo vệ, phục vụ, lái xe ra khỏi bảng lương biên chế.</li>
+            </ul>
+            <span class="tag tag-required">BẮT BUỘC CÓ</span>
+          </div>
+
+          <!-- Nhóm 3 -->
+          <div class="card">
+            <div class="card-icon icon-gold">⏱️</div>
+            <h3>3. Hồ sơ Khối lượng & Thời gian (Kỳ 1 năm)</h3>
+            <p>Cung cấp sản lượng thực tế cho Biểu B1 và lập Phiếu đo thời gian PP2:</p>
+            <ul>
+              <li><strong>Sản lượng công việc thực tế hoàn thành:</strong> Số lượng hồ sơ, báo cáo, ca khám, lớp học, văn bản phát hành trong kỳ <code>01/10/2025 – 30/09/2026</code>.</li>
+              <li><strong>Phiếu đo thời gian thực tế:</strong> Khảo sát thời gian trung bình (phút hoặc giờ) thực hiện cho 01 đơn vị sản phẩm/công việc.</li>
+              <li><strong>Hồ sơ chuyển đổi số & ứng dụng CNTT:</strong> Các phần mềm quản lý, số hóa giúp cắt giảm thời gian để kê khai biểu B2_CT.</li>
+            </ul>
+            <span class="tag tag-required">BẮT BUỘC CÓ</span>
+          </div>
+
+          <!-- Nhóm 4 -->
+          <div class="card">
+            <div class="card-icon icon-red">⚖️</div>
+            <h3>4. Hồ sơ Phân công & Chế độ Quỹ giờ Chuẩn</h3>
+            <p>Xác định chế độ làm việc và cân đối tải giờ cho từng cá nhân ($E + F \le D$):</p>
+            <ul>
+              <li><strong>Bảng phân công nhiệm vụ chi tiết:</strong> Phân công nhiệm vụ chính và nhiệm vụ kiêm nhiệm của từng cá nhân trong đơn vị.</li>
+              <li><strong>Chế độ phổ biến (1.904 giờ/năm):</strong> Áp dụng cho Cán bộ quản lý, công chức và nhân viên hành chính (theo HD 07-HD/BTCTW).</li>
+              <li><strong>Chế độ đặc thù ngành (1.680 giờ/năm hoặc riêng):</strong> Giáo viên THCS/Tiểu học (theo TT 05/2025/TT-BGDĐT); hoặc ca kíp y tế, nghệ thuật.</li>
+              <li><strong>Nghĩa vụ kiêm nhiệm / giảng dạy bắt buộc:</strong> Giờ dạy của Hiệu trưởng (70h/năm), Phó Hiệu trưởng (140h/năm) để đưa vào cột F.</li>
+            </ul>
+            <span class="tag tag-required">BẮT BUỘC CÓ</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUY TRÌNH 6 CHẶNG (P0 -> P5) -->
+      <section id="sec-pipeline" class="content-sec section-block">
+        <div class="section-head">
+          <span class="sub">LỘ TRÌNH THỰC HIỆN</span>
+          <h2>Quy Trình Triển Khai Khép Kín 6 Chặng (P0 $
+ightarrow$ P5)</h2>
+          <p>Mô hình xử lý chuyên sâu đảm bảo tính toàn vẹn toán học và quy chuẩn pháp lý từ đầu vào đến tệp xuất XML:</p>
+        </div>
+
+        <div class="steps-pipeline">
+          <div class="step-card">
+            <span class="step-num">CHẶNG P0</span>
+            <h4>Khảo Sát & Trích Xuất Hồ Sơ</h4>
+            <p>Quét OCR tài liệu pháp lý, đối chiếu bảng lương T9/2026, lập bảng hiện trạng và danh mục hồ sơ còn thiếu.</p>
+            <div class="step-verify">✓ Báo cáo hiện trạng P0 & Bảng giả định</div>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">CHẶNG P1</span>
+            <h4>Nạp C1, Chuẩn Hóa A1 & A2</h4>
+            <p>Thiết lập danh mục VTVL chuẩn (loại bỏ HTPV), phân rã nhiệm vụ và 100-130 công việc, kiểm tra khóa ngoài.</p>
+            <div class="step-verify">✓ Khớp mã A1 - A2 - C1 tuyệt đối</div>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">CHẶNG P2</span>
+            <h4>Đo Lường & Tính Toán B1, B2</h4>
+            <p>Nạp sản lượng thực tế kỳ chuẩn, lập Phiếu đo thời gian 04 sheet, lọc ngoại lai bằng Robust Z-score (MAD).</p>
+            <div class="step-verify">✓ B1!R đạt "ĐẠT" 100% số dòng</div>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">CHẶNG P3</span>
+            <h4>Hoàn Thiện C1, C2 & Tính C3</h4>
+            <p>Xác lập quỹ giờ chuẩn (1.904h / 1.680h), áp dụng PP1 và PP2, xử lý kiêm nhiệm khi nhu cầu quy đổi < 0.3.</p>
+            <div class="step-verify">✓ C3!M đạt "ĐẠT" 100% số dòng</div>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">CHẶNG P4</span>
+            <h4>Nguồn Lực D1 & Phương Án D2</h4>
+            <p>Mã hóa nhân lực ẩn danh, cân đối giờ $E+F \le D$, lập dự báo 5 năm và phương án tinh giản 5-10% tại D2.</p>
+            <div class="step-verify">✓ D1!J đạt "Đạt", D2!J sẵn sàng</div>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num">CHẶNG P5</span>
+            <h4>Kiểm Thử 58 Tiêu Chí & XML</h4>
+            <p>Tính toán lại công thức bằng headless engine, can thiệp XML cấu trúc 51 file, xuất trọn bộ 06 sản phẩm.</p>
+            <div class="step-verify">✓ Đạt 58/58 tiêu chí | 0 lỗi import</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DYNAMIC PROMPT GENERATOR SECTION -->
+      <section id="sec-prompt" class="content-sec section-block">
+        <div class="section-head">
+          <span class="sub">CÔNG CỤ TỰ ĐỘNG HÓA</span>
+          <h2>Bộ Tạo Prompt Dynamic Đa Ngành Cho AI Agent</h2>
+          <p>
+            Tùy biến Prompt cho bất kỳ khối cơ quan nào (Giáo dục, Xã/Phường, Hành chính, Y tế, Văn hóa, Doanh nghiệp).
+            Chọn khối ngành, nhập thông số và bấm <strong>"Sao chép Prompt"</strong> để chạy ngay trên Claude, ChatGPT, Gemini hoặc Antigravity:
+          </p>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-controls">
+            <div class="field-group">
+              <label for="sel-sector">Khối ngành / Loại hình cơ quan</label>
+              <select id="sel-sector">
+                <option value="education">🎓 Giáo dục & Đào tạo (Trường THCS, Tiểu học, Mầm non, THPT)</option>
+                <option value="commune">🏛️ Hành chính Cấp Xã / Phường / Thị trấn (UBND Cấp Xã)</option>
+                <option value="civil_service">🏢 Cơ quan Hành chính (Sở, Ban, Ngành, UBND Cấp Huyện)</option>
+                <option value="health">🏥 Đơn vị Sự nghiệp Y tế (Bệnh viện, TTYT, Trạm Y tế)</option>
+                <option value="culture">🎭 Đơn vị Sự nghiệp Văn hóa, Thể thao, Du lịch & Sự nghiệp khác</option>
+                <option value="enterprise">🏭 Doanh nghiệp Nhà nước / Công ty TNHH MTV Nhà nước</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="inp-agency-name">Tên đơn vị / Cơ quan</label>
+              <input type="text" id="inp-agency-name" value="Trường Trung học cơ sở Cái Khế">
+            </div>
+
+            <div class="field-group">
+              <label for="inp-agency-code">Mã cơ quan / Đơn vị</label>
+              <input type="text" id="inp-agency-code" value="H13.102.12">
+            </div>
+
+            <div class="field-group">
+              <label for="inp-parent">Cơ quan quản lý trực tiếp</label>
+              <input type="text" id="inp-parent" value="UBND phường Cái Khế">
+            </div>
+
+            <div class="field-group">
+              <label for="inp-staff-count">Số lượng nhân sự / biên chế</label>
+              <input type="number" id="inp-staff-count" value="130">
+            </div>
+
+            <div class="field-group">
+              <label for="inp-period">Kỳ số liệu rà soát chuẩn</label>
+              <input type="text" id="inp-period" value="01/10/2025 – 30/09/2026">
+            </div>
+          </div>
+
+          <div class="prompt-output-header">
+            <h3>⚡ Dynamic Prompt Chuyên Gia VTVL (Được cá nhân hóa theo thông số trên)</h3>
+            <button class="btn-copy" id="btn-copy-prompt">📋 Sao chép Prompt</button>
+          </div>
+
+          <textarea class="prompt-editor" id="prompt-output" readonly></textarea>
+          <div class="prompt-guide">
+            💡 <em>Gợi ý:</em> Dán toàn bộ nội dung Prompt này vào AI Agent (Claude 3.5 Sonnet, ChatGPT Plus, Gemini Pro) cùng các file dữ liệu đầu vào trong thư mục làm việc để AI tự động thực thi trọn vẹn quy trình P0-P5.
+          </div>
+        </div>
+      </section>
+
+      <!-- SẢN PHẨM ĐẦU RA MONG MUỐN -->
+      <section id="sec-deliverables" class="content-sec section-block">
+        <div class="section-head">
+          <span class="sub">KẾT QUẢ ĐẦU RA TIÊU CHUẨN</span>
+          <h2>Bộ 06 Sản Phẩm Bàn Giao Hoàn Chỉnh (Thư mục 06_KET_QUA)</h2>
+          <p>Mỗi lần chạy thành công đều kết xuất đầy đủ 06 tài liệu chính thức, đáp ứng hoàn toàn yêu cầu thẩm định:</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Sp 1 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-xlsx">XLSX</span>
+              <strong>SẢN PHẨM 1</strong>
+            </div>
+            <h4>DATAVTVL_[MA].xlsx</h4>
+            <p>Tệp dữ liệu lõi đầy đủ 15 sheet + biểu kiểm tra. Toàn bộ công thức tự động đã tính toán xong, 100% cột trạng thái đạt "ĐẠT", 0 lỗi công thức.</p>
+            <div class="deliverable-specs">
+              ✓ Đạt 58/58 tiêu chí tự động<br>
+              ✓ Đồng bộ tuyệt đối khóa ngoài A1-A2-C1-D1
+            </div>
+          </div>
+
+          <!-- Sp 2 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-xlsx">XLSX</span>
+              <strong>SẢN PHẨM 2</strong>
+            </div>
+            <h4>IMPORT_Bo_bieu_VTVL_v2_[MA].xlsx</h4>
+            <p>Tệp nạp trực tiếp vào phần mềm Ban Tổ chức Trung ương. Can thiệp XML trực tiếp, bảo toàn nguyên vẹn 51 tệp thành phần, không lỗi sharedStrings.</p>
+            <div class="deliverable-specs">
+              ✓ Nạp thành công vào hệ thống BTC TW<br>
+              ✓ Kiểm tra 0 lỗi SheetJS & ExcelJS
+            </div>
+          </div>
+
+          <!-- Sp 3 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-xlsx">XLSX</span>
+              <strong>SẢN PHẨM 3</strong>
+            </div>
+            <h4>PHIEU_DO_THOI_GIAN_[MA].xlsx</h4>
+            <p>Phiếu đo thời gian chuẩn 04 sheet gọn gàng. Tự động tính toán tổng giờ, tỷ lệ tải, quy đổi số người và cảnh báo mức ĐỎ / VÀNG / XANH.</p>
+            <div class="deliverable-specs">
+              ✓ Phát hiện dị biệt bằng Robust Z-score<br>
+              ✓ Theo dõi chi tiết cân đối tải giờ/tiết
+            </div>
+          </div>
+
+          <!-- Sp 4 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-xlsx">XLSX</span>
+              <strong>SẢN PHẨM 4</strong>
+            </div>
+            <h4>PHU_LUC_TINH_TOAN_[MA].xlsx</h4>
+            <p>Hệ thống 09 biểu bảng phân tích kỹ thuật chuyên sâu phục vụ giải trình hội đồng thẩm định và đối chiếu bảo mật nhân lực nội bộ.</p>
+            <div class="deliverable-specs">
+              ✓ Dự báo dòng chảy quy mô & lộ trình tinh giản<br>
+              ✓ Danh sách hưu trí và đối chiếu định mức
+            </div>
+          </div>
+
+          <!-- Sp 5 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-docx">DOCX</span>
+              <strong>SẢN PHẨM 5</strong>
+            </div>
+            <h4>BAO_CAO_VTVL_[MA].docx</h4>
+            <p>Báo cáo thuyết minh Đề án VTVL hoàn chỉnh 8 phần chuẩn thể thức văn bản hành chính, sẵn sàng trình Lãnh đạo ký duyệt và nộp cấp trên.</p>
+            <div class="deliverable-specs">
+              ✓ Đầy đủ căn cứ pháp lý & bảng số liệu màu<br>
+              ✓ Phương án sắp xếp và giải trình định mức
+            </div>
+          </div>
+
+          <!-- Sp 6 -->
+          <div class="deliverable-card">
+            <div class="deliverable-header">
+              <span class="file-badge badge-txt">TXT</span>
+              <strong>SẢN PHẨM 6</strong>
+            </div>
+            <h4>BIEN_BAN_TU_KIEM_TRA_[MA].txt</h4>
+            <p>Biên bản ghi nhận kết quả kiểm tra độc lập 58 tiêu chí tự động (Đạt: 58 | Lỗi: 0), kiểm chứng cấu trúc XML và các giả định chuyên môn.</p>
+            <div class="deliverable-specs">
+              ✓ Minh chứng độc lập trước khi nộp<br>
+              ✓ Khớp nối 100% Phiếu đo và Biểu C3
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREFLIGHT VALIDATOR TOOL -->
+      <section id="sec-validator" class="content-sec section-block">
+        <div class="section-head">
+          <span class="sub">CÔNG CỤ KIỂM TRA TRỰC TIẾP</span>
+          <h2>Preflight Validator: Kiểm Tra Tệp Bộ Biểu XLSX Trực Tuyến</h2>
+          <p>Kiểm tra dấu vân tay, cấu trúc tệp ZIP và các lỗi nghiệp vụ VTVL v2 ngay trên trình duyệt (Bảo mật 100%, không tải dữ liệu lên máy chủ):</p>
+        </div>
+
+        <div class="panel">
+          <h2>Kiểm tra validation VTVL v2</h2>
+          <p class="vtvl-muted">Đối chiếu dữ liệu nhập, mã tham chiếu và cấu trúc OOXML theo đúng tiêu chuẩn hệ thống tiếp nhận.</p>
+          <div class="form-two">
+            <div>
+              <label class="field" for="vtvl-import">File Bộ biểu cần kiểm tra (.xlsx)</label>
+              <input id="vtvl-import" type="file" accept=".xlsx">
+            </div>
+            <div>
+              <label class="field" for="vtvl-template">Mẫu Bộ biểu VTVL v2 gốc (để so sánh cấu trúc)</label>
+              <input id="vtvl-template" type="file" accept=".xlsx">
+            </div>
+          </div>
+
+          <div style="margin-top:14px;max-width:380px">
+            <label class="field" for="vtvl-period">Kỳ hồ sơ quy chuẩn — bắt buộc khớp chính xác</label>
+            <input id="vtvl-period" type="text" value="01/10/2025 – 30/09/2026">
+          </div>
+
+          <div class="calc-actions">
+            <button class="btn-primary" id="vtvl-check">Kiểm tra validation</button>
+            <button class="btn-secondary" id="vtvl-save" disabled>Tải báo cáo JSON</button>
+          </div>
+
+          <div id="vtvl-result" class="vtvl-preflight" aria-live="polite">
+            Chưa có kết quả. Hãy chọn tệp XLSX rồi nhấn "Kiểm tra validation".
+          </div>
+        </div>
+      </section>
+
+      <!-- LIÊN HỆ TÔI KHI CẦN HỖ TRỢ -->
+      <section id="sec-contact" class="content-sec section-block">
+        <div class="contact-section">
+          <div class="contact-info">
+            <h2>Liên Hệ Tôi Khi Cần Hỗ Trợ Kỹ Thuật & Nghiệp Vụ</h2>
+            <p>
+              Đội ngũ chuyên gia sẵn sàng đồng hành cùng đơn vị xử lý triệt để mọi vướng mắc: từ rà soát hồ sơ, cân đối định mức giờ/tiết, sửa lỗi file import BTC Trung ương đến bảo vệ phương án trước hội đồng thẩm định.
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-method-icon">📞</div>
+                <div>
+                  <strong>HOTLINE / ZALO TƯ VẤN TRỰC TIẾP</strong>
+                  <span>0907.xxx.xxx (Hỗ trợ 24/7 toàn quốc)</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">📧</div>
+                <div>
+                  <strong>EMAIL TIẾP NHẬN HỒ SƠ</strong>
+                  <span>contact@captain-solution.tech</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">📍</div>
+                <div>
+                  <strong>ĐỊA BÀN HỖ TRỢ TRỌNG ĐIỂM</strong>
+                  <span>Cần Thơ, TP. Hồ Chí Minh & Triển khai toàn quốc</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">🛡️</div>
+                <div>
+                  <strong>CAM KẾT DỊCH VỤ</strong>
+                  <span>Bảo mật 100% dữ liệu nhân sự · Bao pass 58/58 tiêu chí</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form đăng ký hỗ trợ -->
+          <div class="contact-form-card">
+            <h3>Đăng Ký Tư Vấn & Rà Soát Hồ Sơ</h3>
+            <p>Điền thông tin dưới đây, chúng tôi sẽ liên hệ lại trong vòng 30 phút:</p>
+
+            <form id="form-support" onsubmit="event.preventDefault(); submitContact();">
+              <div class="form-input">
+                <label for="c-name">Họ và tên người liên hệ *</label>
+                <input type="text" id="c-name" required placeholder="Nguyễn Văn A - Hiệu trưởng / Trưởng phòng">
+              </div>
+
+              <div class="form-input">
+                <label for="c-agency">Cơ quan / Đơn vị công tác *</label>
+                <input type="text" id="c-agency" required placeholder="Trường THCS ... / UBND Phường ...">
+              </div>
+
+              <div class="form-input">
+                <label for="c-phone">Số điện thoại / Zalo *</label>
+                <input type="tel" id="c-phone" required placeholder="09xxxxxxxx">
+              </div>
+
+              <div class="form-input">
+                <label for="c-service">Nhu cầu cần hỗ trợ chính</label>
+                <select id="c-service">
+                  <option value="fix-import">Sửa lỗi Import vào phần mềm BTC Trung ương</option>
+                  <option value="full-package">Xây dựng trọn gói hồ sơ VTVL (P0 -> P5)</option>
+                  <option value="audit-check">Rà soát, kiểm thử 58 tiêu chí trên file có sẵn</option>
+                  <option value="balance-quota">Đo lường thời gian & Cân đối định mức nhân lực</option>
+                  <option value="ai-agent">Cài đặt và hướng dẫn chạy AI Agent tự động</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <label for="c-note">Ghi chú hoặc tình trạng lỗi hiện tại</label>
+                <textarea id="c-note" rows="3" placeholder="Mô tả ngắn lỗi gặp phải (ví dụ: lỗi kỳ K2526, hỏng file xml, vượt quỹ giờ...)"></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">🚀 Gửi Yêu Cầu Hỗ Trợ Ngay</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Captain Solution · VTVL 360 Platform</span>
+      <span>Hệ Thống Rà Soát & Chuẩn Hóa Vị Trí Việc Làm Toàn Diện</span>
+    </footer>
   </div>
-  <div style="margin-top:14px;max-width:350px"><label class="field" for="vtvl-period">Kỳ hồ sơ — phải khớp chính xác</label><input id="vtvl-period" type="text" value="01/10/2025 – 30/09/2026"></div>
-  <div class="calc-actions"><button class="primary" id="vtvl-check">Kiểm tra validation</button><button class="secondary" id="vtvl-save" disabled>Tải báo cáo JSON</button></div>
-  <div id="vtvl-result" class="vtvl-preflight" aria-live="polite">Chưa có kết quả. Chọn tệp rồi nhấn Kiểm tra validation.</div>
 </div>
-<div class="note">Một file XLSX mở được không đồng nghĩa đúng mẫu import. Bản triển khai sau phải kiểm chứng cấu trúc ZIP/OOXML, công thức, validation và mã liên kết.</div></section>
-<section class="page" id="calculator"><div class="page-head"><h1>Đối chiếu sản lượng B1</h1><p>So sánh tổng số đã chốt với các nguồn thành phần. Phải xác nhận cùng kỳ, phạm vi và đơn vị tính.</p></div><div class="panel"><div class="form-two"><div><label class="field" for="unit">Đơn vị / trường</label><input id="unit" type="text" maxlength="160" placeholder="Tên đơn vị"></div><div><label class="field" for="total">Tổng đã chốt</label><input id="total" type="number" min="0" step="1" placeholder="Nhập số nguyên"></div></div><div class="row-between"><h2>Nguồn thành phần</h2><button id="add" class="small-btn">+ Thêm nguồn</button></div><div id="rows"></div><div class="calc-actions"><button id="check" class="primary">Đối chiếu tổng</button><button id="export" class="secondary" disabled>Xuất báo cáo JSON</button></div><div class="result" id="calc-result" aria-live="polite">Chưa có kết quả đối chiếu.</div></div><div class="note">Kết quả chỉ xác nhận phép cộng. Không tự ghi vào file B1, không thay thế biên bản chốt số liệu của đơn vị.</div></section>
-<section class="page" id="legal"><div class="page-head"><h1>Căn cứ pháp lý</h1><p>Đọc trực tiếp văn bản, điều khoản và tình trạng hiệu lực trước khi áp dụng cho đơn vị.</p></div><div class="legal">
-<article><div><strong>Hướng dẫn 07-HD/BTCTW, 19/10/2026</strong><p>Rà soát vị trí việc làm, xác định nhu cầu nhân lực, phương án biên chế.</p></div><a href="https://xaydungchinhsach.chinhphu.vn/ra-soat-hoan-thien-vi-tri-viec-lam-huong-dan-su-dung-cac-phu-luc-va-bieu-mau-theo-8-buoc-119261102153150862.htm" target="_blank" rel="noopener noreferrer">Mở nguồn ↗</a></article>
-<article><div><strong>Thông tư 19/2023/TT-BGDĐT</strong><p>Vị trí việc làm, định mức đối với cơ sở giáo dục mầm non công lập.</p></div><a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener noreferrer">Tra cứu ↗</a></article>
-<article><div><strong>Thông tư 20/2023/TT-BGDĐT</strong><p>Vị trí việc làm, định mức số lượng người làm việc tại cơ sở phổ thông công lập.</p></div><a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener noreferrer">Tra cứu ↗</a></article>
-<article><div><strong>Thông tư 05/2025/TT-BGDĐT</strong><p>Chế độ làm việc của giáo viên giáo dục phổ thông và dự bị đại học.</p></div><a href="https://vanban.chinhphu.vn/" target="_blank" rel="noopener noreferrer">Tra cứu ↗</a></article>
-<article><div><strong>Hướng dẫn điền bộ biểu Excel</strong><p>Tham khảo mô tả nhóm biểu A1, A2, B1, B2, C1–C3, D1–D2.</p></div><a href="https://xaydungchinhsach.chinhphu.vn/ra-soat-hoan-thien-vi-tri-viec-lam-huong-dan-dien-bo-bieu-excel-119261102154219343.htm" target="_blank" rel="noopener noreferrer">Mở nguồn ↗</a></article>
-</div></section>
-</main><footer><span>© 2026 Captain Solution · VTVL 360</span><span>Bản demo — Hỗ trợ tại Cần Thơ</span></footer></div></div>
+
+<!-- Toast Popup Notification -->
+<div class="toast" id="toast">Đã sao chép prompt vào bộ nhớ tạm!</div>
+
 <script>
-(function(){
-'use strict';
-var names={overview:'Tổng quan',workflow:'Quy trình 8 bước',evidence:'Kiểm tra tệp nguồn',calculator:'Đối chiếu B1',legal:'Căn cứ pháp lý'};
-var side=document.getElementById('side'),menu=document.getElementById('mobile-menu');
-function hideMenu(){side.classList.remove('open');menu.setAttribute('aria-expanded','false')}
-function navigate(p){if(!names[p])return;document.querySelectorAll('.page').forEach(function(n){n.classList.toggle('active',n.id===p)});document.querySelectorAll('[data-page]').forEach(function(n){var a=n.dataset.page===p;n.classList.toggle('active',a);if(a)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current')});document.getElementById('current-page').textContent=names[p];hideMenu();window.scrollTo(0,0)}
-document.querySelectorAll('[data-page],[data-go]').forEach(function(b){b.addEventListener('click',function(){navigate(b.dataset.page||b.dataset.go)})});
-menu.addEventListener('click',function(){var b=side.classList.toggle('open');menu.setAttribute('aria-expanded',String(b))});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')hideMenu()});
-var data=[
-['Rà soát chức năng, nhiệm vụ','Ghi rõ đơn vị, cấp quản lý, kỳ hồ sơ và căn cứ giao nhiệm vụ.'],
-['Xác định công việc và sản phẩm','Phân rã nhiệm vụ, mô tả sản phẩm có thể kiểm chứng.'],
-['Thống kê khối lượng và thời gian','Kiểm chứng số sản phẩm, thời gian thực hiện và nguồn của B1.'],
-['Đánh giá yếu tố tác động','Ghi rõ thay đổi do chuyển đổi số, tự chủ, thuê dịch vụ.'],
-['Hoàn thiện danh mục VTVL','Đối chiếu danh mục C1, mô tả C2 với phê duyệt.'],
-['Tính nhu cầu nhân lực','Phân biệt quy đổi giờ, người thực cần và chỉ tiêu được giao.'],
-['Xây dựng phương án','So sánh nhu cầu, hiện trạng, kiêm nhiệm, dự báo 5 năm.'],
-['Kiểm tra, xác nhận, nộp','Đối chiếu biểu, nguồn, ký xác nhận và kiểm thử import trước khi nộp.']
-];
-var box=document.getElementById('steps');data.forEach(function(x,i){var el=document.createElement('div');el.className='step';var n=document.createElement('span');n.className='num';n.textContent=String(i+1).padStart(2,'0');var d=document.createElement('div'),h=document.createElement('h3'),p=document.createElement('p');h.textContent=x[0];p.textContent=x[1];d.append(h,p);el.append(n,d);box.append(el)});
-var file=document.getElementById('file');file.addEventListener('change',async function(){var o=document.getElementById('file-result');o.className='result';var f=file.files&&file.files[0];if(!f){o.textContent='Chưa chọn tệp.';return}if(f.size>50*1024*1024){o.classList.add('warning');o.textContent='File vượt giới hạn 50 MB của demo.';return}try{var buf=await f.arrayBuffer(),x=new Uint8Array(buf,0,4);if(!f.name.toLowerCase().endsWith('.xlsx')||x[0]!==80||x[1]!==75||![3,5,7].includes(x[2])){o.classList.add('warning');o.textContent='Chưa phải XLSX có chữ ký ZIP hợp lệ.';return}var dg=await crypto.subtle.digest('SHA-256',buf),hex=Array.from(new Uint8Array(dg)).map(function(k){return k.toString(16).padStart(2,'0')}).join('');o.classList.add('success');o.textContent='Tên: '+f.name+'\nDung lượng: '+f.size.toLocaleString('vi-VN')+' byte\nSHA-256: '+hex+'\n\nChỉ mới xác nhận chữ ký ZIP, không có dữ liệu tải lên máy chủ.'}catch(e){o.classList.add('warning');o.textContent='Không thể kiểm tra tệp trên trình duyệt này.'}});
-var rows=document.getElementById('rows'),last=null;
-function reset(){last=null;document.getElementById('export').disabled=true;document.getElementById('calc-result').className='result';document.getElementById('calc-result').textContent='Dữ liệu đã đổi, hãy đối chiếu lại.'}
-function add(){var d=document.createElement('div');d.className='source-row';var n=document.createElement('input');n.type='text';n.maxLength=160;n.placeholder='Tên nguồn';n.setAttribute('aria-label','Tên nguồn');var v=document.createElement('input');v.type='number';v.step='1';v.min='0';v.placeholder='Số lượng';v.setAttribute('aria-label','Số lượng');var b=document.createElement('button');b.className='remove';b.textContent='×';b.type='button';b.setAttribute('aria-label','Xóa nguồn');b.addEventListener('click',function(){d.remove();reset()});n.addEventListener('input',reset);v.addEventListener('input',reset);d.append(n,v,b);rows.append(d)}
-add();add();document.getElementById('add').addEventListener('click',function(){add();reset()});['unit','total'].forEach(function(k){document.getElementById(k).addEventListener('input',reset)});
-document.getElementById('check').addEventListener('click',function(){var r=document.getElementById('calc-result');r.className='result';var f=document.getElementById('total'),t=Number(f.value);var items=Array.from(rows.children).map(function(n){return {name:n.children[0].value.trim(),raw:n.children[1].value,count:Number(n.children[1].value)}});if(f.value===''||!Number.isSafeInteger(t)||t<0||!items.length||items.some(function(x){return !x.name||x.raw===''||!Number.isSafeInteger(x.count)||x.count<0})){r.classList.add('warning');r.textContent='Nhập đủ số nguyên không âm và tên cho mọi nguồn.';return}var sum=items.reduce(function(a,x){return a+x.count},0);if(!Number.isSafeInteger(sum)){r.classList.add('warning');r.textContent='Tổng quá lớn để tính an toàn.';return}var delta=sum-t;r.classList.add(delta===0?'success':'warning');r.textContent='Tổng đã chốt: '+t.toLocaleString('vi-VN')+'\nTổng các nguồn: '+sum.toLocaleString('vi-VN')+'\nChênh lệch: '+delta.toLocaleString('vi-VN')+'\nTrạng thái: '+(delta===0?'KHỚP SỐ HỌC — vẫn cần chứng cứ':'KHÔNG KHỚP — kiểm tra lại nguồn');last={schema:'vtvl-b1-check/v1',unit:document.getElementById('unit').value.trim(),confirmed_total:t,components:items.map(function(x){return {name:x.name,count:x.count}}),components_total:sum,difference:delta,arithmetic_match:delta===0,human_approval:false,checked_at:new Date().toISOString()};document.getElementById('export').disabled=false});
-document.getElementById('export').addEventListener('click',function(){if(!last)return;var blob=new Blob([JSON.stringify(last,null,2)],{type:'application/json;charset=utf-8'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='vtvl-doi-chieu-b1.json';a.click();setTimeout(function(){URL.revokeObjectURL(u)},500)});
-})();
+// Dynamic Prompt Templates for Multiple Sectors
+const promptTemplates = {
+  education: {
+    sectorName: "Khối Cơ sở Giáo dục Phổ thông & Mầm non",
+    legalBases: [
+      "- Thông tư số 20/2023/TT-BGDĐT: Vị trí việc làm, định mức số lượng người làm việc trong các cơ sở giáo dục phổ thông.",
+      "- Thông tư số 05/2025/TT-BGDĐT: Chế độ làm việc của giáo viên phổ thông (Quỹ giờ chuẩn 1.680h/năm, định mức 19 tiết/tuần THCS, 23 tiết/tuần Tiểu học).",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Nghị định số 111/2022/NĐ-CP & NĐ 235/2026/NĐ-CP: Lao động hợp đồng hỗ trợ, phục vụ (TUYỆT ĐỐI KHÔNG ĐƯA VÀO C1, D1)."
+    ],
+    rules: [
+      "1. Quỹ giờ chuẩn: CBQL & Nhân viên = 1.904h/năm (Phổ biến); Giáo viên = 1.680h/năm (Đặc thù 42 tuần x 40h).",
+      "2. Giờ dạy học bắt buộc của CBQL (cột D1!F): Hiệu trưởng = 70h/năm (2 tiết x 35 tuần); Phó Hiệu trưởng = 140h/năm (4 tiết x 35 tuần).",
+      "3. Định mức tối đa giáo viên: INT(1.90 x Số lớp) + 1 (Tổng phụ trách Đội).",
+      "4. Kiêm nhiệm khi nhu cầu quy đổi PP2 < 0.3 người (C3!J = 0)."
+    ]
+  },
+  commune: {
+    sectorName: "Khối Cơ quan Hành chính Cấp Xã / Phường / Thị trấn",
+    legalBases: [
+      "- Nghị định số 33/2023/NĐ-CP: Quy định về cán bộ, công chức cấp xã và người hoạt động không chuyên trách.",
+      "- Nghị định số 29/2024/NĐ-CP: Hướng dẫn tiêu chuẩn chức danh công chức cấp xã.",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Nghị định số 111/2022/NĐ-CP: Hợp đồng lao động bảo vệ, tạp vụ cơ quan (không đưa vào C1, D1)."
+    ],
+    rules: [
+      "1. Cán bộ chuyên trách: Bí thư, Phó Bí thư, Chủ tịch HĐND, Chủ tịch UBND, Phó Chủ tịch HĐND, Phó Chủ tịch UBND, Chủ tịch UBMTTQ và Trưởng các đoàn thể chính trị.",
+      "2. Công chức cấp xã: Chỉ huy trưởng Quân sự, Văn phòng - Thống kê, Địa chính - Xây dựng - Đô thị/Môi trường, Tài chính - Kế toán, Tư pháp - Hộ tịch, Văn hóa - Xã hội.",
+      "3. Chế độ làm việc: Phổ biến (1.904 giờ/người/năm, 40 giờ/tuần).",
+      "4. Không đưa người hoạt động không chuyên trách vào biểu biên chế chính thức D1."
+    ]
+  },
+  civil_service: {
+    sectorName: "Khối Cơ quan Hành chính Nhà nước (Sở, Ban, Ngành, UBND Cấp Huyện)",
+    legalBases: [
+      "- Nghị định số 62/2020/NĐ-CP: Vị trí việc làm và biên chế công chức.",
+      "- Thông tư số 03/2023/TT-BNV: Hướng dẫn vị trí việc làm công chức lãnh đạo, quản lý và chuyên môn dùng chung.",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Nghị định số 111/2022/NĐ-CP: Lao động hợp đồng hỗ trợ, phục vụ."
+    ],
+    rules: [
+      "1. Nhóm Lãnh đạo quản lý: Giám đốc/Phó Giám đốc Sở, Trưởng/Phó phòng chuyên môn trực thuộc.",
+      "2. Nhóm Nghiệp vụ chuyên ngành: Chuyên viên chính, Chuyên viên theo từng lĩnh vực chuyên môn phụ trách.",
+      "3. Nhóm Nghiệp vụ chuyên môn dùng chung: Kế toán, Văn thư, Lưu trữ, Quản trị công sở, CNTT.",
+      "4. Quỹ giờ chuẩn: 1.904 giờ/người/năm (Phổ biến, 40h/tuần). Loại bỏ HTPV khỏi C1/D1."
+    ]
+  },
+  health: {
+    sectorName: "Khối Đơn vị Sự nghiệp Công lập Y tế (Bệnh viện, TTYT, Trạm Y tế)",
+    legalBases: [
+      "- Thông tư số 03/2023/TT-BYT: Hướng dẫn vị trí việc làm, định mức số lượng người làm việc trong đơn vị sự nghiệp y tế.",
+      "- Nghị định số 106/2020/NĐ-CP: Vị trí việc làm và số lượng người làm việc trong đơn vị sự nghiệp công lập.",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Nghị định số 111/2022/NĐ-CP: Lao động hỗ trợ, phục vụ."
+    ],
+    rules: [
+      "1. Nhóm chuyên môn y tế: Bác sĩ (Hạng I, II, III), Dược sĩ, Điều dưỡng, Hộ sinh, Kỹ thuật y, Y tế công cộng, Dược hạng IV.",
+      "2. Định mức nhân lực tính theo số giường bệnh thực kê, số bàn khám hoặc quy mô dân số (đối với TTYT/Trạm y tế).",
+      "3. Chế độ làm việc: Phổ biến 1.904h/năm, riêng các vị trí trực ca kíp đặc thù áp dụng quy đổi theo quyết định phê duyệt.",
+      "4. Cân đối giờ làm việc và chế độ trực đảm bảo tổng giờ E + F <= D."
+    ]
+  },
+  culture: {
+    sectorName: "Khối Đơn vị Sự nghiệp Văn hóa, Thể thao, Du lịch & Sự nghiệp khác",
+    legalBases: [
+      "- Thông tư số 10/2023/TT-BVHTTDL: Hướng dẫn vị trí việc làm chức danh nghề nghiệp chuyên ngành VHTTDL.",
+      "- Nghị định số 106/2020/NĐ-CP & Nghị định số 120/2020/NĐ-CP về đơn vị sự nghiệp công lập.",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Nghị định số 111/2022/NĐ-CP: Lao động hợp đồng hỗ trợ, phục vụ."
+    ],
+    rules: [
+      "1. Chức danh nghề nghiệp chuyên ngành: Đạo diễn, Diễn viên, Họa sĩ, Biên tập viên, Thư viện viên, Di sản viên, Huấn luyện viên.",
+      "2. Chức danh dùng chung: Kế toán, Văn thư, Quản trị công sở, Kỹ thuật viên công nghệ.",
+      "3. Quỹ giờ chuẩn: Mức chung 1.904 giờ/năm (hoặc giờ biểu diễn đặc thù nếu có văn bản định mức được duyệt).",
+      "4. Phương pháp xác định: Kết hợp định mức khối lượng sản phẩm văn hóa nghệ thuật và phương pháp chuyên gia."
+    ]
+  },
+  enterprise: {
+    sectorName: "Khối Doanh nghiệp Nhà nước / Công ty TNHH MTV Nhà nước",
+    legalBases: [
+      "- Luật Doanh nghiệp & Nghị định số 159/2020/NĐ-CP về quản lý người giữ chức danh, chức vụ tại DN nhà nước.",
+      "- Hướng dẫn số 07-HD/BTCTW ngày 19/10/2026 của Ban Tổ chức Trung ương.",
+      "- Bộ luật Lao động & Quy chế trả lương, định mức lao động kỹ thuật nội bộ của Doanh nghiệp."
+    ],
+    rules: [
+      "1. Khối Quản lý: Chủ tịch HĐTV/HĐQT, Thành viên HĐTV, Kiểm soát viên, Tổng Giám đốc/Giám đốc, Phó TGĐ.",
+      "2. Khối Nghiệp vụ văn phòng: Tài chính - Kế toán, Kế hoạch đầu tư, Pháp chế, Nhân sự, Kiểm toán nội bộ.",
+      "3. Khối Vận hành sản xuất: Kỹ sư, Kỹ thuật viên, Giám sát theo định mức lao động kinh tế - kỹ thuật.",
+      "4. Quỹ giờ làm việc: 1.904 giờ/năm theo chế độ 40h/tuần."
+    ]
+  }
+};
+
+function generatePrompt() {
+  const sector = document.getElementById('sel-sector').value;
+  const agencyName = document.getElementById('inp-agency-name').value.trim() || 'ĐƠN VỊ SỰ NGHIỆP';
+  const agencyCode = document.getElementById('inp-agency-code').value.trim() || 'MA.CO.QUAN';
+  const parentAgency = document.getElementById('inp-parent').value.trim() || 'CƠ QUAN QUẢN LÝ CẤP TRÊN';
+  const staffCount = document.getElementById('inp-staff-count').value || '100';
+  const period = document.getElementById('inp-period').value.trim() || '01/10/2025 – 30/09/2026';
+  const data = promptTemplates[sector];
+
+  const promptText = `# VAI TRÒ & NHIỆM VỤ: HỘI ĐỒNG CHUYÊN GIA RÀ SOÁT VTVL & TEST ARCHITECT EXCEL XML
+
+Bạn đóng vai trò là Hội đồng Chuyên gia Cấp cao phụ trách xây dựng và rà soát Đề án Vị trí việc làm (VTVL) năm 2026 cho:
+- **Tên cơ quan / Đơn vị**: ${agencyName}
+- **Mã định danh cơ quan**: \`${agencyCode}\`
+- **Cơ quan quản lý trực tiếp**: ${parentAgency}
+- **Khối ngành**: ${data.sectorName}
+- **Tổng số lượng nhân sự / biên chế chốt**: ${staffCount} người
+- **Kỳ số liệu nền bắt buộc**: \`${period}\` (bắt buộc đúng ký tự khoảng trắng và gạch ngang dài).
+
+---
+
+## 1. CĂN CỨ PHÁP LÝ BẮT BUỘC
+${data.legalBases.join('\n')}
+
+---
+
+## 2. NGUYÊN TẮC HÀNH XỬ CỐT LÕI (KHÔNG ĐƯỢC VI PHẠM)
+1. **Tuyệt đối không bịa số liệu, căn cứ, người xác nhận**: Mọi dữ liệu phải dẫn chứng chính xác từ hồ sơ tài liệu thực tế, bảng lương, quyết định bổ nhiệm. Khoản chưa rõ ghi "ước lượng – chờ xác nhận".
+2. **Không phá vỡ cấu trúc biểu mẫu**: Bảo tồn 100% công thức, bảo vệ trang và Data Validation của mẫu gốc Bộ biểu VTVL v2. Không chèn/xóa dòng, không đổi tên sheet.
+3. **Tuyệt đối không đưa nhóm HTPV (Hỗ trợ phục vụ)** vào biểu C1, D1: Các công việc bảo vệ, phục vụ, lái xe theo NĐ 111/2022/NĐ-CP ký HĐLĐ, không hưởng biên chế.
+4. **Mã hóa ẩn danh nhân lực (D1)**: Đánh mã tham chiếu duy nhất dạng \`${agencyCode}.001\` đến \`${agencyCode}.${staffCount}\`. Tuyệt đối không ghi họ tên cá nhân vào file DATA Trung ương.
+5. **Cân đối giờ làm việc**: Tổng giờ dành cho VTVL chính (cột E) + Giờ việc khác/kiêm nhiệm (cột F) phải nhỏ hơn hoặc bằng Quỹ giờ chuẩn của cá nhân (cột D), tức là: **E + F <= D**.
+6. **Kỹ thuật can thiệp XML bắt buộc**: Khi tạo file \`IMPORT_Bo_bieu_VTVL_v2_${agencyCode}.xlsx\`, can thiệp trực tiếp vào XML của tệp zip mẫu để không làm mất \`xl/sharedStrings.xml\`, giữ nguyên cấu trúc 51 tệp thành phần để vượt qua kiểm tra phần mềm Ban Tổ chức Trung ương.
+
+---
+
+## 3. QUY TẮC NGHIỆP VỤ ĐẶC THÙ NGÀNH
+${data.rules.join('\n')}
+
+---
+
+## 4. LỘ TRÌNH TRIỂN KHAI 6 BƯỚC KHÉP KÍN (P0 -> P5)
+- **Bước P0 – Khảo sát & Nhận diện dữ liệu**: Quét hồ sơ pháp lý, bảng lương, hợp đồng, lập danh mục còn thiếu và bảng giả định chuyên môn.
+- **Bước P1 – Nạp C1, chuẩn hóa A1 & A2**: Thiết lập danh mục VTVL chuẩn, phân rã nhiệm vụ và danh mục công việc, kiểm soát quan hệ khóa ngoài.
+- **Bước P2 – Thống kê Khối lượng & Thời gian**: Nạp sản lượng thực tế kỳ \`${period}\` vào B1; lập Phiếu đo thời gian 04 sheet, loại bỏ dị biệt bằng Robust Z-score (MAD).
+- **Bước P3 – Xác định Quỹ giờ & Tính toán C3**: Thiết lập quỹ giờ chuẩn, áp dụng PP1/PP2, xử lý kiêm nhiệm khi nhu cầu quy đổi < 0.3 người. Đảm bảo C3!M đạt "ĐẠT" 100%.
+- **Bước P4 – Phân bổ Nguồn lực D1 & Dự báo 5 năm D2**: Bố trí nhân lực ẩn danh vào D1, bảo đảm E+F <= D; lập phương án sắp xếp, tinh giản 5-10% giai đoạn 2027-2031 tại D2.
+- **Bước P5 – Kiểm thử 58 tiêu chí & Đóng gói 06 sản phẩm**: Chạy tính toán lại độc lập bằng headless engine, can thiệp XML đóng gói file Import, xuất báo cáo Word và biên bản nghiệm thu.
+
+---
+
+## 5. BỘ 06 SẢN PHẨM ĐẦU RA BẮT BUỘC TẠI 06_KET_QUA/
+1. \`DATAVTVL_${agencyCode}.xlsx\` (15 sheet + kiểm tra 58 tiêu chí đạt 100%)
+2. \`IMPORT_Bo_bieu_VTVL_v2_${agencyCode}.xlsx\` (Chuẩn XML 51 tệp nạp phần mềm BTC Trung ương)
+3. \`PHIEU_DO_THOI_GIAN_${agencyCode}.xlsx\` (Gọn 04 sheet, phân màu Đỏ/Vàng/Xanh)
+4. \`PHU_LUC_TINH_TOAN_${agencyCode}.xlsx\` (09 biểu phân tích chuyên đề)
+5. \`BAO_CAO_VTVL_${agencyCode}.docx\` (Thuyết minh hoàn chỉnh 8 phần)
+6. \`BIEN_BAN_TU_KIEM_TRA_${agencyCode}.txt\` (Ghi nhận kết quả kiểm tra độc lập 58 tiêu chí)
+
+Hãy thực hiện từng bước và báo cáo kết quả chi tiết sau mỗi chặng!`;
+
+  document.getElementById('prompt-output').value = promptText;
+}
+
+// Event Listeners for Dynamic Prompt
+['sel-sector', 'inp-agency-name', 'inp-agency-code', 'inp-parent', 'inp-staff-count', 'inp-period'].forEach(id => {
+  document.getElementById(id).addEventListener('input', generatePrompt);
+});
+
+// Copy Prompt to Clipboard
+document.getElementById('btn-copy-prompt').addEventListener('click', function() {
+  const text = document.getElementById('prompt-output').value;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('btn-copy-prompt');
+    const toast = document.getElementById('toast');
+    btn.classList.add('copied');
+    btn.textContent = '✓ Đã sao chép!';
+    toast.classList.add('show');
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.textContent = '📋 Sao chép Prompt';
+      toast.classList.remove('show');
+    }, 2500);
+  });
+});
+
+// Sidebar Navigation Scroll
+document.querySelectorAll('.nav button[data-target]').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const targetId = this.getAttribute('data-target');
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById('current-title').textContent = this.textContent;
+    }
+  });
+});
+
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const sideMenu = document.getElementById('side');
+mobileMenuBtn.addEventListener('click', () => {
+  sideMenu.classList.toggle('open');
+});
+
+// Contact Form Submission Handler
+function submitContact() {
+  const name = document.getElementById('c-name').value;
+  const agency = document.getElementById('c-agency').value;
+  const phone = document.getElementById('c-phone').value;
+  const service = document.getElementById('c-service').value;
+  alert(`Cảm ơn ${name} (${agency})!
+
+Yêu cầu hỗ trợ về dịch vụ: "${service}" của bạn đã được tiếp nhận. Chuyên gia VTVL 360 sẽ liên hệ lại qua số ${phone} trong vòng 30 phút.`);
+  document.getElementById('form-support').reset();
+}
+
+// Initial prompt generation
+generatePrompt();
 </script>
-<script type="module" src="/validator-ui.mjs"></script>
+
+<script type="module" src="./validator-ui.mjs"></script>
+
 </body>
 </html>

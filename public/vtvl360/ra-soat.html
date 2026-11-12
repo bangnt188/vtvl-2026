@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f2e2b">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="application-name" content="VTVL 360">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VTVL 360">
+<link rel="canonical" href="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VTVL 360">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Vị trí việc làm 360">
+<meta property="og:description" content="Tạo tệp đơn vị, bấm giờ, nạp phiếu và rà soát 9 biểu VTVL ngay trên trình duyệt. Dữ liệu không rời khỏi máy.">
+<meta property="og:url" content="https://vtvl.captain-solution.tech/vtvl360/">
+<meta property="og:image" content="https://vtvl.captain-solution.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>Rà soát 9 biểu</title>
+<meta name="description" content="Kiểm tra bộ biểu vị trí việc làm theo Hướng dẫn 13-HD/BTCTU ngay trên trình duyệt.">
+<meta name="author" content="Trang Hoài Vũ">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%2312283f%27/%3E%3Cpath d=%27M7 22h18%27 stroke=%27%23e9b949%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3Cpath d=%27M9 17V10m7 7V7m7 10v-5%27 stroke=%27%23ffffff%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/chung.css?v=1.3.0.bb475873fa">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* Bàn rà soát hồ sơ: dải mốc nộp ở đầu, khay thả tệp, rồi sổ kết quả chia thẻ. */
+:root {
+  --paper: #f4f6f5; --sheet: #ffffff; --ink: #17242b; --ink-2: #4c5c63; --ink-3: #74838a; --line: #d8e0df; --line-2: #e8eeed;
+  --accent: #0e6b66; --accent-ink: #ffffff; --accent-soft: #e2f0ee;
+  --fix: #b42318; --fix-soft: #fdeceb; --ev: #9a5a06; --ev-soft: #fdf2e1; --rv: #2f5d9c; --rv-soft: #e9f0fa; --ok: #1e7a46; --ok-soft: #e4f4ea;
+  --shadow: 0 1px 2px rgba(23, 36, 43, .06), 0 4px 16px rgba(23, 36, 43, .05);
+  --display: "Literata", Georgia, "Times New Roman", serif;
+  --body: "Be Vietnam Pro", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, "Courier New", monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a3b4b6; --ink-3: #7d9093; --line: #2b3b3e; --line-2: #22312f;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --fix: #f8746a; --fix-soft: #3a1c1a; --ev: #f2b552; --ev-soft: #372a13; --rv: #8db3ec; --rv-soft: #1a2841; --ok: #62d18f; --ok-soft: #12301f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0f1719; --sheet: #162124; --ink: #e3ebea; --ink-2: #a3b4b6; --ink-3: #7d9093; --line: #2b3b3e; --line-2: #22312f;
+  --accent: #52c2b7; --accent-ink: #062523; --accent-soft: #143331;
+  --fix: #f8746a; --fix-soft: #3a1c1a; --ev: #f2b552; --ev-soft: #372a13; --rv: #8db3ec; --rv-soft: #1a2841; --ok: #62d18f; --ok-soft: #12301f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+/* Bản offline mở thẳng từ đĩa không có khung trang của Artifact: .panel { display: grid } sẽ đè thuộc tính hidden, hiện mọi thẻ cùng lúc */
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--mono); font-size: .86em; letter-spacing: -.01em; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-2); }
+
+/* đầu trang */
+.top { border-bottom: 1px solid var(--line); background: var(--sheet); }
+.top .wrap { padding-block: 28px 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 32px; align-items: end; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.2vw, 42px); line-height: 1.1; margin-top: 6px; letter-spacing: -.01em; }
+.lede { margin: 10px 0 0; max-width: 62ch; color: var(--ink-2); }
+.milestones { display: flex; gap: 12px; flex-wrap: wrap; }
+.ms { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 12px; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 10px 14px 10px 10px; background: var(--paper); min-width: 0; max-width: 300px; }
+.ms .date { grid-row: span 3; text-align: center; border-right: 1px dashed var(--line); padding-right: 12px; }
+.ms .dd { font-family: var(--mono); font-size: 26px; font-weight: 500; line-height: 1; display: block; }
+.ms .mm { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.ms b { font-size: 14px; }
+.ms .left { font-size: 13px; color: var(--accent); font-weight: 600; }
+.ms .note { font-size: 12px; color: var(--ink-3); line-height: 1.35; }
+.ms.past .left { color: var(--fix); }
+
+/* khay thả tệp */
+main { padding-block: 22px 40px; display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+.drop { border: 1.5px dashed var(--accent); border-radius: 14px; background: var(--sheet); padding: 22px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: center; transition: background .15s, border-color .15s; }
+.drop.over { background: var(--accent-soft); border-style: solid; }
+.drop svg { width: 46px; height: 46px; }
+.drop h2 { font-size: 17px; font-weight: 600; }
+.drop p { margin: 3px 0 0; color: var(--ink-2); font-size: 14px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--sheet); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-weight: 500; font-size: 14px; white-space: nowrap; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn.small { padding: 5px 10px; font-size: 13px; }
+.progress { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; }
+.progress .bar { height: 6px; border-radius: 99px; background: var(--line-2); overflow: hidden; margin-top: 8px; }
+.progress .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+.progress.indet .bar i { width: 35% !important; animation: slide 1.1s ease-in-out infinite; }
+@keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+@media (prefers-reduced-motion: reduce) { .progress.indet .bar i { animation: none; width: 100% !important; opacity: .5; } }
+.alert { border-radius: var(--r); padding: 10px 14px; font-size: 14px; border: 1px solid var(--line); background: var(--sheet); }
+.alert.err { border-color: var(--fix); background: var(--fix-soft); }
+.alert.info { background: var(--accent-soft); border-color: transparent; }
+
+/* tổng quan */
+.head-row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.files { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.file-chip { display: inline-flex; gap: 8px; align-items: center; border: 1px solid var(--line); background: var(--sheet); border-radius: 99px; padding: 4px 12px 4px 10px; font-size: 13px; max-width: 100%; }
+.file-chip .mono { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 2px; text-align: left; cursor: default; }
+button.tile { cursor: pointer; }
+button.tile:hover { border-color: var(--ink-3); }
+.tile .k { font-size: 13px; color: var(--ink-2); display: flex; align-items: center; gap: 7px; }
+.tile .v { font-size: 30px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.tile .s { font-size: 12px; color: var(--ink-3); }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.dot.fix { background: var(--fix); } .dot.evidence { background: var(--ev); } .dot.review { background: var(--rv); } .dot.ok { background: var(--ok); }
+.tile.fix .v { color: var(--fix); } .tile.evidence .v { color: var(--ev); } .tile.review .v { color: var(--rv); }
+.sheets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.sh { background: var(--sheet); padding: 9px 12px; display: grid; gap: 1px; min-width: 0; }
+.sh .n { font-weight: 600; font-size: 13px; display: flex; justify-content: space-between; gap: 6px; }
+.sh .n span:last-child { font-weight: 500; font-size: 12px; white-space: nowrap; }
+td.m { display: none; }
+#vtTable { min-width: 1320px; }
+#vtTable td.nm { min-width: 230px; }
+#vtTable td.nw { white-space: nowrap; }
+.sh .d { font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sh .meter { height: 3px; background: var(--line-2); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+.sh .meter i { display: block; height: 100%; background: var(--accent); }
+.sh.missing .n { color: var(--fix); }
+
+/* thẻ */
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: thin; }
+.tab { border: 0; background: none; padding: 10px 14px; font-weight: 500; font-size: 14px; color: var(--ink-2); border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .c { font-size: 12px; color: var(--ink-3); margin-left: 4px; font-variant-numeric: tabular-nums; }
+.panel { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+/* Lưới một cột: không để nội dung rộng (danh sách sản phẩm dài trong ô chọn) kéo giãn cả trang trên điện thoại */
+.grp-body, .ai, .sub, .tb { grid-template-columns: minmax(0, 1fr); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--sheet); flex-wrap: wrap; }
+.seg button { border: 0; background: none; padding: 6px 11px; font-size: 13px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); font-weight: 600; }
+select, input[type="search"] { border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); padding: 6px 10px; font-size: 13px; min-width: 0; max-width: 100%; }
+input[type="search"] { width: 220px; max-width: 100%; }
+.chip { display: inline-flex; align-items: center; border-radius: 99px; padding: 1px 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.chip.fix { background: var(--fix-soft); color: var(--fix); }
+.chip.evidence { background: var(--ev-soft); color: var(--ev); }
+.chip.review { background: var(--rv-soft); color: var(--rv); }
+.chip.code { background: var(--line-2); color: var(--ink-2); font-family: var(--mono); font-weight: 500; }
+
+details.grp { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); }
+details.grp + details.grp { margin-top: 8px; }
+details.grp > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+details.grp > summary::-webkit-details-marker { display: none; }
+details.grp > summary .t { font-weight: 600; min-width: 0; }
+details.grp > summary .cnt { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink-2); font-size: 14px; }
+details.grp > summary .cnt::after { content: " ▸"; color: var(--ink-3); }
+details.grp[open] > summary .cnt::after { content: " ▾"; }
+.grp-body { border-top: 1px solid var(--line-2); padding: 12px 14px 14px; display: grid; gap: 10px; }
+.howto { font-size: 14px; color: var(--ink-2); max-width: 90ch; }
+.howto b { color: var(--ink); font-weight: 600; }
+.tbl-wrap { overflow: auto; border: 1px solid var(--line-2); border-radius: 8px; max-width: 100%; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+th { font-weight: 600; font-size: 12px; color: var(--ink-2); background: var(--paper); position: sticky; top: 0; z-index: 1; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+td .mono { white-space: nowrap; }
+.more { justify-self: start; }
+.sub { border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; }
+.sub h4 { margin: 0; font-size: 14px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.sub ul { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-2); }
+.ai { border: 1px solid var(--accent); border-radius: 8px; padding: 12px; display: grid; gap: 8px; background: var(--accent-soft); }
+.ai textarea { width: 100%; min-height: 220px; border: 1px solid var(--line); border-radius: 6px; background: var(--sheet); padding: 10px; font-family: var(--mono); font-size: 12px; line-height: 1.5; resize: vertical; }
+.ai .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.note-box { font-size: 13px; color: var(--ink-2); background: var(--sheet); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.note-box b { color: var(--ink); }
+.tb { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 6px; }
+.tb h3 { font-size: 16px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.tb p { margin: 0; font-size: 14px; color: var(--ink-2); max-width: 95ch; }
+.tb p b { color: var(--ink); }
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.rules section { background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; }
+.rules h3 { font-size: 15px; margin-bottom: 6px; }
+.rules ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.rules li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px; font-size: 13.5px; }
+.rules li .mono { color: var(--ink-3); padding-top: 1px; }
+.rules li small { display: block; color: var(--ink-3); font-size: 12.5px; }
+/* Mục rộng hết hàng (thay đổi, bảng PL3): lưới một cột minmax(0, 1fr) để bảng rộng cuộn trong khung, không kéo giãn trang */
+.rules section.wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; align-content: start; }
+.rules section.wide h3 { margin-bottom: 0; }
+.rules section.wide p { margin: 0; font-size: 13px; color: var(--ink-2); max-width: 110ch; }
+.rules h4 { margin: 4px 0 0; font-size: 14px; }
+.rules ul.plain { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 13.5px; max-width: 110ch; }
+.rules ul.plain li { display: list-item; }
+.pl3 table { min-width: 600px; }
+.pl3 th.n, .pl3 td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pl3 tr.g td { background: var(--paper); font-weight: 600; color: var(--ink); }
+.empty { text-align: center; padding: 26px 12px; color: var(--ink-2); background: var(--sheet); border: 1px dashed var(--line); border-radius: var(--r); }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 9px 16px; border-radius: 8px; font-size: 14px; box-shadow: var(--shadow); z-index: 20; max-width: calc(100% - 32px); }
+footer { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
+footer .wrap { padding-block: 16px 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; }
+
+@media (max-width: 900px) {
+  .top .wrap { grid-template-columns: minmax(0, 1fr); }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sheets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rules { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  body { font-size: 14.5px; }
+  .drop { grid-template-columns: minmax(0, 1fr); text-align: left; padding: 16px; }
+  .drop svg { display: none; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles .tile:last-child { grid-column: span 2; }
+  .tile .v { font-size: 26px; }
+  table.rows thead { display: none; }
+  table.rows, table.rows tbody, table.rows tr { display: block; width: 100%; }
+  table.rows tr { padding: 8px 10px; border-bottom: 1px solid var(--line-2); }
+  table.rows tr:last-child { border-bottom: 0; }
+  table.rows td { display: none; border: 0; padding: 0; }
+  table.rows td.m, table.rows td.msg { display: block; }
+  table.rows td.m { font-size: 12px; color: var(--ink-3); margin-bottom: 2px; }
+  .ms { max-width: none; flex: 1 1 100%; }
+  details.grp > summary { grid-template-columns: auto minmax(0, 1fr) auto; }
+  details.grp > summary .chip.code { display: none; }
+  input[type="search"] { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="v360-bar"><div class="v360-bar-in">
+  <a class="v360-brand" href="index.html"><span>Vị trí việc làm <b>360</b></span></a>
+  <nav class="v360-nav" aria-label="Các trang"><a href="index.html">Trang chủ</a><a href="tao-tep.html">Tạo tệp đơn vị</a><a href="ra-soat.html" aria-current="page">Rà soát 9 biểu</a><a href="bam-gio.html">Bấm giờ</a></nav>
+</div></div>
+
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Hướng dẫn 13-HD/BTCTU · bản 1.2.2</div>
+      <h1>Rà soát 9 biểu</h1>
+      <p class="lede">Kiểm tra tệp Excel vị trí việc làm theo Hướng dẫn 13-HD/BTCTU trước khi nộp. Tệp được đọc ngay trên máy, không gửi đi đâu.</p>
+    </div>
+    <div class="milestones" id="milestones" aria-label="Mốc nộp"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="drop" id="drop" aria-label="Chọn tệp Excel">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="5" width="34" height="38" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><path d="M7 15h34M7 25h34M7 35h34M19 5v38M30 5v38" stroke="var(--accent)" stroke-width="1.4" fill="none" opacity=".75"/><circle cx="36" cy="37" r="8" fill="var(--accent)"/><path d="M32.5 37l2.4 2.4 4.6-4.8" stroke="var(--accent-ink)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <h2>Kéo tệp .xlsx của đơn vị vào đây</h2>
+      <p>Chọn được nhiều tệp cùng lúc, ví dụ tệp khối Đảng và tệp khối chính quyền của một xã. Tệp 4 MB đọc mất khoảng 5–15 giây.</p>
+    </div>
+    <div>
+      <input type="file" id="fileInput" accept=".xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple hidden>
+      <button class="btn primary" id="pickBtn" type="button">Chọn tệp Excel</button>
+    </div>
+  </section>
+
+  <div class="progress" id="progress" hidden role="status" aria-live="polite">
+    <div id="progressText">Đang đọc tệp…</div>
+    <div class="bar"><i id="progressBar"></i></div>
+  </div>
+  <div id="errors"></div>
+
+  <section id="results" class="panel" aria-live="polite">
+    <div class="alert info" id="sampleBanner" hidden>Đang xem <b>ví dụ minh họa</b>: tệp của một xã giả định (X99) có cài sẵn vài lỗi. Kéo tệp của đơn vị vào khay phía trên để kiểm tra thật.</div>
+    <div class="head-row">
+      <div class="files" id="fileChips"></div>
+      <button class="btn" id="exportBtn" type="button">Xuất Excel kết quả</button>
+    </div>
+    <div class="alert info" id="bigNote" hidden></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="sheets" id="sheets" aria-label="Tiến độ theo biểu"></div>
+    <nav class="tabs" role="tablist" id="tabs">
+      <button class="tab" role="tab" data-tab="issues" aria-selected="true">Cần xử lý<span class="c" id="tc-issues"></span></button>
+      <button class="tab" role="tab" data-tab="vtvl" aria-selected="false">Tổng hợp VTVL<span class="c" id="tc-vtvl"></span></button>
+      <button class="tab" role="tab" data-tab="evidence" aria-selected="false">Chưa đủ căn cứ<span class="c" id="tc-evidence"></span></button>
+      <button class="tab" role="tab" data-tab="template" aria-selected="false">Lỗi của biểu mẫu<span class="c" id="tc-template"></span></button>
+      <button class="tab" role="tab" data-tab="rules" aria-selected="false">Công cụ kiểm tra gì</button>
+    </nav>
+    <div class="panel" id="tab-issues" role="tabpanel">
+      <div class="filters">
+        <div class="seg" id="levelSeg" role="group" aria-label="Lọc theo mức"></div>
+        <select id="sheetSel" aria-label="Lọc theo biểu"></select>
+        <select id="fileSel" aria-label="Lọc theo tệp" hidden></select>
+        <input type="search" id="q" placeholder="Tìm mã hoặc nội dung" aria-label="Tìm mã hoặc nội dung">
+      </div>
+      <div id="groups"></div>
+    </div>
+    <div class="panel" id="tab-vtvl" role="tabpanel" hidden>
+      <div class="note-box">Ba con số khác nhau: <b>người quy đổi PP2</b> (giờ ròng ÷ quỹ giờ) chỉ là căn cứ tính; <b>người cần bố trí</b> là kết luận ở C3 sau khi phân tích; <b>biên chế</b> do cấp có thẩm quyền giao. Giờ B1 do công cụ tự tính lại từ các cột nhập, chỉ cộng dòng đủ điều kiện như cột R của mẫu.</div>
+      <div class="muted" id="vtExempt" style="font-size:13px" hidden></div>
+      <div class="filters">
+        <label class="muted" style="display:inline-flex;gap:6px;align-items:center;font-size:13px"><input type="checkbox" id="vtOnly" checked> Chỉ VTVL đã có số liệu</label>
+        <input type="search" id="vtQ" placeholder="Tìm mã hoặc tên VTVL" aria-label="Tìm VTVL">
+      </div>
+      <div class="tbl-wrap" style="max-height:70vh"><table id="vtTable"></table></div>
+    </div>
+    <div class="panel" id="tab-evidence" role="tabpanel" hidden>
+      <div class="note-box">Hướng dẫn 13 yêu cầu nộp kèm đợt 1 <b>danh sách nội dung chưa đủ căn cứ</b>, ghi rõ nguyên nhân, thời hạn bổ sung và đầu mối. Bảng dưới gom các dòng còn dùng câu mẫu hoặc thiếu nguồn. Tệp xuất Excel có sẵn trang <b>Chua_du_can_cu</b> với hai cột trống để đơn vị điền.</div>
+      <div id="evidenceBox"></div>
+    </div>
+    <div class="panel" id="tab-template" role="tabpanel" hidden>
+      <div class="note-box">Đây là lỗi nằm trong chính tệp mẫu, không tính là lỗi của đơn vị. Tệp xuất Excel có trang <b>Gop_y_bieu_mau</b> theo đúng cột của trang Y_KIEN_DON_VI để đơn vị chép vào góp ý.</div>
+      <div id="templateBox" class="panel"></div>
+    </div>
+    <div class="panel" id="tab-rules" role="tabpanel" hidden>
+      <div class="note-box">Công cụ đọc các cột nhập liệu và <b>tự tính lại</b>, không dựa vào kết quả công thức lưu sẵn trong tệp (có thể đã cũ). Kết quả là để đơn vị tự rà trước khi nộp, không thay cho thẩm định của Ban Tổ chức. Mức <b>Phải sửa</b>: sai cấu trúc, mã, danh sách hoặc số liệu. <b>Cần bổ sung căn cứ</b>: chưa truy được nguồn, kể cả khi Excel báo ĐẠT. <b>Nên xem lại</b>: nghi vấn nghiệp vụ, có thể đúng nếu có giải trình.</div>
+      <div class="rules" id="rulesBox"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Rà soát 9 biểu · bản 1.2.2 (31/10/2026) · Căn cứ Hướng dẫn 13-HD/BTCTU và bộ mẫu Excel K2526.</span>
+    <span id="modeNote"></span>
+  </div>
+</footer>
+<div class="toast" id="toast" hidden role="status"></div>
+
+
+<div class="v360-foot"><div class="v360-foot-in">
+  <span><b>Vị trí việc làm 360</b> · bản web 1.3.0 (02/11/2026) · Rà soát 9 biểu 1.2.2</span>
+  <span class="v360-safe">Tệp của đơn vị chỉ xử lý trên máy của bạn, không gửi lên máy chủ.</span>
+  <span id="v360NhatKy" hidden>Trang có ghi nhật ký sử dụng (mã, tên đơn vị, thao tác, số đếm) để tác giả theo dõi; không gửi tệp, không ghi họ tên.</span>
+  <span id="v360TacGia" hidden></span>
+  <span id="v360LienHe" hidden></span>
+</div></div>
+<script src="lib/xlsx-0.18.5.full.min.js?v=1.3.0.c9506197ca"></script>
+<script src="js/engine.js?v=1.3.0.5b8ffefed3"></script>
+<script src="js/ra-soat.js?v=1.3.0.6bfaf38a99"></script>
+<script src="js/cau-hinh.js?v=1.3.0.47973bc4f9"></script>
+<script src="js/khung.js?v=1.3.0.b723b2bb43"></script>
+</body>
+</html>
